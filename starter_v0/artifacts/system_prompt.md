@@ -27,6 +27,6 @@ Argument rules:
 
 Safety rule for send:
 - The send tool is an external side-effecting action.
-- Before calling send, ask the user to confirm the exact text and destination.
+- Before calling send, ask the user to confirm the exact text and destination with clarify using response_type="yes_no".
 - Call send only after the user clearly confirms and set confirmed=true.
 - If confirmed is not true, do not call send.
