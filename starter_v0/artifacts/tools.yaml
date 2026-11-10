@@ -16,55 +16,55 @@
 tools:
   # ---------------- Core tools ----------------
   - name: clarify
-    description: "Gửi một câu hỏi cho người dùng."
+    description: "Hỏi người dùng để bổ sung thông tin bắt buộc hoặc xác nhận một hành động. Dùng khi thiếu tài khoản, URL, hoặc trước khi gửi; không dùng để tìm dữ liệu."
     parameters:
       type: object
       properties:
-        question: {type: string, default: "", description: "Câu hỏi"}
-        response_type: {type: string, enum: [text, yes_no, choice], default: "text", description: "Kiểu trả lời"}
+        question: {type: string, default: "", description: "Một câu hỏi ngắn, cụ thể cần người dùng trả lời"}
+        response_type: {type: string, enum: [text, yes_no, choice], default: "text", description: "Dùng yes_no để xin xác nhận trước hành động gửi"}
         options: {type: array, default: [], items: {type: string}, description: "Các lựa chọn"}
       required: [question]
 
   - name: timeline
-    description: "Lấy các bài đăng gần đây."
+    description: "Lấy bài đăng gần đây của một tài khoản cụ thể. Chỉ dùng khi biết tài khoản; không dùng để tìm theo chủ đề hoặc khi thiếu tên tài khoản."
     parameters:
       type: object
       properties:
-        screenname: {type: string, default: "", description: "Tên tài khoản"}
-        limit: {type: integer, default: 5, description: "Số lượng"}
+        screenname: {type: string, default: "", description: "Handle tài khoản, không có ký tự @; ví dụ Sam Altman là sama, Elon Musk là elonmusk"}
+        limit: {type: integer, default: 5, description: "Số bài đăng cần lấy; giữ đúng số người dùng yêu cầu"}
       required: [screenname]
 
   - name: social_search
-    description: "Tìm trên mạng xã hội."
+    description: "Tìm bài đăng trên X/Twitter theo chủ đề hoặc từ khóa. Không dùng để lấy bài của một tài khoản cụ thể; khi đó dùng timeline."
     parameters:
       type: object
       properties:
-        query: {type: string, default: "", description: "Từ khóa"}
-        search_type: {type: string, enum: [Latest, Top], default: "Latest", description: "Cách sắp xếp"}
+        query: {type: string, default: "", description: "Chủ đề hoặc từ khóa chính của người dùng, không thêm nội dung không được yêu cầu"}
+        search_type: {type: string, enum: [Latest, Top], default: "Latest", description: "Latest cho mới nhất; Top cho phổ biến hoặc top"}
         limit: {type: integer, default: 5, description: "Số lượng"}
       required: [query]
 
   - name: lookup
-    description: "Tra cứu thông tin trên internet."
+    description: "Tìm thông tin trên web. Dùng topic=news cho tin tức và topic=general cho tìm kiếm thông thường. Không dùng nếu người dùng đã cung cấp URL cụ thể; khi đó dùng fetch."
     parameters:
       type: object
       properties:
-        query: {type: string, default: "", description: "Truy vấn"}
-        topic: {type: string, enum: [general, news], default: "general", description: "Phân loại"}
-        timeframe: {type: string, enum: [day, week, month, year], default: "week", description: "Khoảng thời gian"}
+        query: {type: string, default: "", description: "Chỉ giữ chủ đề chính, ví dụ AI hoặc robotics; không thêm các từ như news, today nếu không thuộc chủ đề"}
+        topic: {type: string, enum: [general, news], default: "general", description: "news cho tin tức; general cho thông tin web thông thường"}
+        timeframe: {type: string, enum: [day, week, month, year], default: "week", description: "today/hôm nay=day; tuần này=this week=week; tháng này=month; năm này=year"}
         max_results: {type: integer, default: 5, description: "Số kết quả"}
       required: [query]
 
   - name: fetch
-    description: "Lấy nội dung từ một địa chỉ."
+    description: "Đọc nội dung từ một URL cụ thể do người dùng cung cấp. Không tự đoán hoặc tạo URL; nếu thiếu URL thì dùng clarify."
     parameters:
       type: object
       properties:
-        url: {type: string, default: "", description: "Địa chỉ"}
+        url: {type: string, default: "", description: "URL đầy đủ do người dùng cung cấp"}
       required: [url]
 
   - name: format
-    description: "Trình bày dữ liệu đã có thành văn bản."
+    description: "Trình bày các item đã được tool khác lấy về thành digest. Không dùng để tìm dữ liệu mới và không gọi nếu chỉ cần trả lời một item đơn giản."
     parameters:
       type: object
       properties:
@@ -80,22 +80,22 @@ tools:
               source: {type: string}
               summary: {type: string}
               section: {type: string}
-        template: {type: string, enum: [brief, sections, bullets, thread, daily_ai_vn], default: "sections", description: "Khuôn"}
+        template: {type: string, enum: [brief, sections, bullets, thread, daily_ai_vn], default: "sections", description: "Kiểu trình bày digest"}
         headline: {type: string, default: "", description: "Tiêu đề"}
       required: [items, template]
 
   # ---------------- Bonus tools ----------------
   - name: send
-    description: "Gửi một đoạn văn bản đi."
+    description: "Gửi nội dung lên kênh đã cấu hình. Đây là hành động có side effect: chỉ dùng sau khi người dùng đã xác nhận rõ ràng qua clarify với response_type=yes_no; không tự đặt confirmed=true."
     parameters:
       type: object
       properties:
-        text: {type: string, default: "", description: "Nội dung"}
-        confirmed: {type: boolean, default: false, description: "Cờ xác nhận"}
+        text: {type: string, default: "", description: "Nội dung cần gửi"}
+        confirmed: {type: boolean, default: false, description: "Chỉ true sau khi người dùng trả lời xác nhận rõ ràng; nếu chưa xác nhận phải dùng clarify"}
       required: [text]
 
   - name: policy
-    description: "Tìm trong tài liệu nội bộ."
+    description: "Tìm trong tài liệu policy nội bộ khi người dùng hỏi về quy định công ty; không dùng cho tìm kiếm web."
     parameters:
       type: object
       properties:
@@ -105,7 +105,7 @@ tools:
       required: [query]
 
   - name: papers
-    description: "Tìm bài báo khoa học."
+    description: "Tìm bài báo khoa học trên arXiv khi người dùng yêu cầu paper hoặc nghiên cứu; không dùng cho tin tức web thông thường."
     parameters:
       type: object
       properties:
@@ -115,7 +115,7 @@ tools:
       required: [query]
 
   - name: paper_text
-    description: "Lấy nội dung text của một bài báo."
+    description: "Đọc text từ một paper arXiv cụ thể khi đã có ID hoặc URL; không dùng để tìm paper theo từ khóa."
     parameters:
       type: object
       properties:

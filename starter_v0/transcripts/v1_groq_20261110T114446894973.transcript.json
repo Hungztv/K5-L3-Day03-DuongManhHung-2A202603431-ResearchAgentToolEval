@@ -1,0 +1,156 @@
+{
+  "version": "v1",
+  "artifact_version": "v1+p6dbc3b87d391+te31296a848a9",
+  "prompt_hash": "6dbc3b87d391d93150eb4d045c375e77f0dd38e3fad7fa2b64b75d08ec6c6199",
+  "tools_hash": "e31296a848a9c5d3e64e2b4738fe206a36887f430f80f30b6119b64de4d0d427",
+  "provider": "groq",
+  "model": null,
+  "system_prompt": "C:\\Users\\duong\\K5-L3-Day03-DuongManhHung-2A202603431-ResearchAgentToolEval\\starter_v0\\artifacts\\system_prompt.md",
+  "tools": "C:\\Users\\duong\\K5-L3-Day03-DuongManhHung-2A202603431-ResearchAgentToolEval\\starter_v0\\artifacts\\tools.yaml",
+  "history_window": 5,
+  "max_tool_rounds": 4,
+  "created_at": "2026-11-10T11:44:46",
+  "updated_at": "2026-11-10T11:45:22",
+  "path": "C:\\Users\\duong\\K5-L3-Day03-DuongManhHung-2A202603431-ResearchAgentToolEval\\starter_v0\\transcripts\\v1_groq_20261110T114446894973.transcript.json",
+  "turns": [
+    {
+      "turn_index": 1,
+      "started_at": "2026-11-10T11:45:00",
+      "user": "thời tiết Hà Nội Hôm nay như nào",
+      "status": "answered",
+      "assistant_text": "**Thời tiết Hà Nội hôm nay (10 / 11 / 2026)**  \n\n| Tình trạng | Nhiệt độ | Gió | Ghi chú |\n|------------|----------|-----|---------|\n| Mây đám, mưa rải rác | 21 – 23 °C (cao nhất) | 3–4 cường độ, hướng Đông Bắc | Thời tiết lạnh, có thể cảm thấy mát |\n| Mức thấp nhất | 16 – 18 °C | – | – |\n| Hiện tại (đã cập nhật 11:30) | 18.2 °C | 10.1 mph (16 kph) | Mây che phủ, độ ẩm 61 %, không mưa ngay |\n\n- **Nguồn**: báo cáo thời tiết ngày 10/11/2026 từ Vietnam.vn (đánh giá 0.94) và dữ liệu thời tiết hiện tại từ WeatherAPI (đánh giá 0.82).  \n\n> *“Hà Nội: Mưa rải rác, thời tiết lạnh, nhiệt độ cao nhất 21‑23 °C, thấp nhất 16‑18 °C.”* (Vietnam.vn)  \n\n> *“Hiện tại: 18.2 °C, mây che phủ, không mưa ngay.”* (WeatherAPI)  \n\nNếu cần cập nhật thêm chi tiết (giờ, độ ẩm, gió, vv) hãy cho tôi biết!",
+      "rounds": [
+        {
+          "round": 1,
+          "assistant_text": null,
+          "tool_calls": [
+            {
+              "name": "lookup",
+              "args": {
+                "max_results": 5,
+                "query": "Hanoi weather today",
+                "timeframe": "day",
+                "topic": "general"
+              }
+            }
+          ],
+          "tool_results": [
+            {
+              "tool": "lookup",
+              "args": {
+                "max_results": 5,
+                "query": "Hanoi weather today",
+                "timeframe": "day",
+                "topic": "general"
+              },
+              "result": {
+                "tool": "web_search",
+                "query": "Hanoi weather today",
+                "topic": "general",
+                "timeframe": "day",
+                "items": [
+                  {
+                    "title": "Weather forecast for November 10, 2026: Cold air mass moves in, bringing cold weather to the North and heavy rain to the Central region.",
+                    "url": "https://www.vietnam.vn/en/du-bao-thoi-tiet-10-11-2026-khong-khi-lanh-tran-sau-mien-bac-ret-trung-bo-mua-lon",
+                    "source": "vietnam.vn",
+                    "summary": "|  |  |  |  |\n ---  --- |\n| Area | Weather | Highest temperature | Lowest temperature |\n| Hanoi | Cloudy, with scattered rain. Northeast wind, force 3-4. Cold weather. | 21-23 degrees | 16-18 degrees |\n| Northwest Vietnam | Cloudy, with scattered rain. Light wind. Cold weather, with intensely cold temperatures in some mountainous areas. | 21-24 degrees, with some areas exceeding 24 degrees. | 15-18 degrees, in some places below 12 degrees. | [...] Northern Vietnam is engulfed in a cold air mass, resulting in freezing temperatures. Photo: Hoang Minh\n\nYou may also like\n\nSpecifically for Hanoi on November 10th, due to the influence of a cold front, there will be scattered rain, cold weather with a slight increase in the highest temperature, reaching 21-23 degrees Celsius.\n\n## Heavy rain continues in Central Vietnam. [...] | Thanh Hoa to Hue | Cloudy, with scattered rain, especially in the South (from Ha Tinh to Hue City) where there will be heavy to very heavy rain and thunderstorms. North to northwest winds at level 3-4, level 5 in coastal areas, level 6 in some places, gusts up to level 7. Cold weather, especially in Hue City. | 21-24 degrees | North: 15-18 degrees; South: 19-22 degrees |",
+                    "score": 0.9407083
+                  },
+                  {
+                    "title": "Hourly forecast for Hanoi, Vietnam",
+                    "url": "https://www.timeanddate.com/weather/vietnam/hanoi/hourly",
+                    "source": "timeanddate.com",
+                    "summary": "NNE\n\nWind: 15 mph\n\nMonday, November 9, 2026Tuesday, November 10, 2026Wednesday, November 11, 2026Thursday, November 12, 2026Friday, November 13, 2026Saturday, November 14, 2026Sunday, November 15, 2026Monday, November 16, 2026\n\nSee weather overview\n\n## Detailed Hourly Forecast — Next 24 hours\n\nShow weather on:  \n\nScroll right to see more [...] See Extended Forecast for more weather\n\nTime\n\nWind  \n (mph)\n\nRain/Snow  \n()\n\nTemp  \n (°F)\n\n59\n\n61\n\n63\n\n65\n\n67\n\n69\n\n71\n\n73\n\n75\n\n77\n\n79\n\n81\n\n83\n\nMonday, November 9, 2026\n\n0.01\n\n9 am\n\n69\n\n15\n\n10 am\n\n69\n\n15\n\n11 am\n\n69\n\n14\n\n12 pm\n\n68\n\n13\n\n1 pm\n\n67\n\n12\n\n2 pm\n\n67\n\n11\n\n3 pm\n\n67\n\n12\n\n4 pm\n\n66\n\n11\n\n5 pm\n\n66\n\n11\n\n6 pm\n\n66\n\n9\n\n7 pm\n\n66\n\n9\n\n8 pm\n\n65\n\n8\n\n9 pm\n\n63\n\n9\n\n10 pm\n\n62\n\n9\n\n11 pm\n\n63\n\n8\n\nTuesday, November 10, 2026\n\n12 am\n\n63\n\n7\n\n1 am\n\n63\n\n7\n\n2 am\n\n63\n\n7\n\n3 am\n\n62\n\n8\n\n4 am\n\n61\n\n8\n\n5 am\n\n61\n\n8\n\n6 am [...] 5 am\n\n61\n\n8\n\n6 am\n\n61\n\n8\n\n7 am\n\n61\n\n8\n\n8 am\n\n63\n\n8\n\n9 am\n\n66\n\n8\n\n10 am\n\n67\n\n8\n\n11 am\n\n69\n\n8\n\n12 pm\n\n70\n\n9\n\n1 pm\n\n71\n\n9\n\n2 pm\n\n72\n\n8\n\n3 pm\n\n72\n\n8\n\n4 pm\n\n71\n\n7\n\n5 pm\n\n69\n\n7\n\n6 pm\n\n67\n\n7\n\n7 pm\n\n65\n\n8\n\n8 pm\n\n64\n\n7\n\n9 pm\n\n64\n\n6\n\n10 pm\n\n64\n\n6\n\n11 pm\n\n62\n\n6\n\nWednesday, November 11, 2026\n\n12 am\n\n62\n\n6\n\n1 am\n\n61\n\n6\n\n2 am\n\n61\n\n5\n\n3 am\n\n61\n\n5\n\n4 am\n\n61\n\n5\n\n5 am\n\n61\n\n5\n\n6 am\n\n60\n\n5\n\n7 am\n\n61\n\n5\n\n8 am\n\n63\n\n6\n\n9 am\n\n67\n\n6\n\n10 am\n\n69\n\n7\n\n11 am\n\n72\n\n6\n\n12 pm\n\n74\n\n5\n\n1 pm\n\n75\n\n4\n\n2 pm\n\n76\n\n3\n\n3 pm\n\n76\n\n2\n\n4 pm",
+                    "score": 0.86441374
+                  },
+                  {
+                    "title": "Weather in Hanoi",
+                    "url": "https://www.weatherapi.com/",
+                    "source": "weatherapi.com",
+                    "summary": "{'location': {'name': 'Hanoi', 'region': '', 'country': 'Vietnam', 'lat': 21.0333, 'lon': 105.85, 'tz_id': 'Asia/Bangkok', 'localtime_epoch': 1794285869, 'localtime': '2026-11-10 11:44'}, 'current': {'last_updated_epoch': 1794285000, 'last_updated': '2026-11-10 11:30', 'temp_c': 18.2, 'temp_f': 64.7, 'is_day': 1, 'condition': {'text': 'Overcast', 'icon': '//cdn.weatherapi.com/weather/64x64/day/122.png', 'code': 1009}, 'wind_mph': 10.1, 'wind_kph': 16.2, 'wind_degree': 328, 'wind_dir': 'NNW', 'pressure_mb': 1027.0, 'pressure_in': 30.33, 'precip_mm': 0.0, 'precip_in': 0.0, 'humidity': 61, 'cloud': 99, 'feelslike_c': 15.2, 'feelslike_f': 59.4, 'windchill_c': 18.2, 'windchill_f': 64.7, 'heatindex_c': 18.2, 'heatindex_f': 64.7, 'dewpoint_c': 10.6, 'dewpoint_f': 51.0, 'vis_km': 10.0, 'vis_miles': 6.0, 'uv': 6.6, 'gust_mph': 13.9, 'gust_kph': 22.3, 'will_it_rain': 0, 'chance_of_rain': 15, 'will_it_snow': 0, 'chance_of_snow': 0, 'wetbulb_c': 13.8, 'wetbulb_f': 56.8}}",
+                    "score": 0.8241719
+                  },
+                  {
+                    "title": "Agricultural Weather Forecast for November 10, 2026 | Ninh Binh: Rain returns from November 12 - ...",
+                    "url": "https://www.youtube.com/watch?v=58fwyJCSgZg",
+                    "source": "youtube.com",
+                    "summary": "#weatherforecast #dbtt #vtvwdb #weather #weathernews #vtvweather #vtvweatherforecast #vtvweather\n\n► Get the fastest updates on weather and natural disasters at VTV Weather Forecast\n\n👉Subscribe to the channel now: \n✔️Follow VTVWDB at:\n\n📌Official Fanpage: \n📌Official Website: \n➥ Operating Unit: Weather and Environment Department, News Division - Vietnam Television Station, 43 Nguyen Chi Thanh Street, Ba Dinh District, Hanoi. [...] # Agricultural Weather Forecast for November 10, 2026 | Ninh Binh: Rain returns from November 12 - ...\n## Channel: VTV Thời Tiết\n923K subscribers\n26 likes\n\n### Description\n2,262 views\nPosted: 2026-11-09\nAgricultural weather forecast for November 10, 2026 | Ninh Binh to experience rain again from November 12-13 | VTVWDB\n\n🌈 VTV Weather Forecast is the official YouTube channel of the Weather and Environment Department, News Division – Vietnam Television. [...] [0:39] ngày 12 đến ngày 13 tháng 11, mưa dông sẽ quay trở lại khu vực này. Cục bộ có nơi có thể có mưa to, không chỉ tiêu thoát nước. Việc chăm sóc phục hồi những\n[0:47] chậu cúc sau ngập úng cũng rất quan trọng. Sau ngập úng, bộ rễ thường bị thiếu oxy, suy yếu, thậm chí có thể bị thối. Vì vậy, bà con cần thường xuyên\n[0:55] kiểm tra tình trạng cây, loại bỏ những lá bị dập nát, vàng úa hoặc có dấu hiệu thối bệnh. Không nên vội bón phân khi đất còn quá ẩm và bộ rễ chưa phục hồi.",
+                    "score": 0.7185356
+                  },
+                  {
+                    "title": "Tomorrow, 10 November: Rain in Da Nang, temperatures lower than today - Weathernews",
+                    "url": "https://weathernews.com/news/en/global/2026/11/09/weather-327",
+                    "source": "weathernews.com",
+                    "summary": "# Tomorrow, 10 November: Rain in Da Nang, temperatures lower than today\n\nPublished : -\n\nFont Size:\n\n## Sunny in Hanoi, slightly cool in the evening\n\nOn Tuesday, 10 November, sunny weather is forecast in Hanoi, with a 10% chance of rain. The low is forecast to be 16°C, within the slightly cold range for northern Vietnam, while the high will be 22°C. The high is lower than today, while the low is about the same. [...] The low is 23°C and the high is 25°C. Both are lower than today. The temperature is forecast to be around 24°C in the evening. The mosquito index indicates high mosquito activity, so take full precautions when going out.\n\n## Sunny in Ho Chi Minh City, with a chance of afternoon rain\n\nSunny weather with occasional rain is forecast in Ho Chi Minh City on 10 November, with a 50% chance of rain. Rain is forecast in the afternoon, with a 90% chance, so bring an umbrella if you plan to go out then. [...] The low is 26°C and the high is 33°C, in the range of intense heat. The high is about the same as today. The temperature is forecast to be around 27°C in the evening. The WBGT index is at a high-caution level for the risk of heat stress. The mosquito index indicates that mosquitoes may be present, so be prepared as needed.\n\nCloudy\n\nCurrent conditions in Tokyo\n\nCloudy\n\n9°\n\nMax 11° Min 9°\n\n Cloudy, occasional rain\n\n  Tue, 10/11Max 14° Min 9°\n Sunny",
+                    "score": 0.7036111
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "round": 2,
+          "assistant_text": "**Thời tiết Hà Nội hôm nay (10 / 11 / 2026)**  \n\n| Tình trạng | Nhiệt độ | Gió | Ghi chú |\n|------------|----------|-----|---------|\n| Mây đám, mưa rải rác | 21 – 23 °C (cao nhất) | 3–4 cường độ, hướng Đông Bắc | Thời tiết lạnh, có thể cảm thấy mát |\n| Mức thấp nhất | 16 – 18 °C | – | – |\n| Hiện tại (đã cập nhật 11:30) | 18.2 °C | 10.1 mph (16 kph) | Mây che phủ, độ ẩm 61 %, không mưa ngay |\n\n- **Nguồn**: báo cáo thời tiết ngày 10/11/2026 từ Vietnam.vn (đánh giá 0.94) và dữ liệu thời tiết hiện tại từ WeatherAPI (đánh giá 0.82).  \n\n> *“Hà Nội: Mưa rải rác, thời tiết lạnh, nhiệt độ cao nhất 21‑23 °C, thấp nhất 16‑18 °C.”* (Vietnam.vn)  \n\n> *“Hiện tại: 18.2 °C, mây che phủ, không mưa ngay.”* (WeatherAPI)  \n\nNếu cần cập nhật thêm chi tiết (giờ, độ ẩm, gió, vv) hãy cho tôi biết!",
+          "tool_calls": [],
+          "tool_results": []
+        }
+      ],
+      "tool_events": [
+        {
+          "tool": "lookup",
+          "args": {
+            "max_results": 5,
+            "query": "Hanoi weather today",
+            "timeframe": "day",
+            "topic": "general"
+          },
+          "result": {
+            "tool": "web_search",
+            "query": "Hanoi weather today",
+            "topic": "general",
+            "timeframe": "day",
+            "items": [
+              {
+                "title": "Weather forecast for November 10, 2026: Cold air mass moves in, bringing cold weather to the North and heavy rain to the Central region.",
+                "url": "https://www.vietnam.vn/en/du-bao-thoi-tiet-10-11-2026-khong-khi-lanh-tran-sau-mien-bac-ret-trung-bo-mua-lon",
+                "source": "vietnam.vn",
+                "summary": "|  |  |  |  |\n ---  --- |\n| Area | Weather | Highest temperature | Lowest temperature |\n| Hanoi | Cloudy, with scattered rain. Northeast wind, force 3-4. Cold weather. | 21-23 degrees | 16-18 degrees |\n| Northwest Vietnam | Cloudy, with scattered rain. Light wind. Cold weather, with intensely cold temperatures in some mountainous areas. | 21-24 degrees, with some areas exceeding 24 degrees. | 15-18 degrees, in some places below 12 degrees. | [...] Northern Vietnam is engulfed in a cold air mass, resulting in freezing temperatures. Photo: Hoang Minh\n\nYou may also like\n\nSpecifically for Hanoi on November 10th, due to the influence of a cold front, there will be scattered rain, cold weather with a slight increase in the highest temperature, reaching 21-23 degrees Celsius.\n\n## Heavy rain continues in Central Vietnam. [...] | Thanh Hoa to Hue | Cloudy, with scattered rain, especially in the South (from Ha Tinh to Hue City) where there will be heavy to very heavy rain and thunderstorms. North to northwest winds at level 3-4, level 5 in coastal areas, level 6 in some places, gusts up to level 7. Cold weather, especially in Hue City. | 21-24 degrees | North: 15-18 degrees; South: 19-22 degrees |",
+                "score": 0.9407083
+              },
+              {
+                "title": "Hourly forecast for Hanoi, Vietnam",
+                "url": "https://www.timeanddate.com/weather/vietnam/hanoi/hourly",
+                "source": "timeanddate.com",
+                "summary": "NNE\n\nWind: 15 mph\n\nMonday, November 9, 2026Tuesday, November 10, 2026Wednesday, November 11, 2026Thursday, November 12, 2026Friday, November 13, 2026Saturday, November 14, 2026Sunday, November 15, 2026Monday, November 16, 2026\n\nSee weather overview\n\n## Detailed Hourly Forecast — Next 24 hours\n\nShow weather on:  \n\nScroll right to see more [...] See Extended Forecast for more weather\n\nTime\n\nWind  \n (mph)\n\nRain/Snow  \n()\n\nTemp  \n (°F)\n\n59\n\n61\n\n63\n\n65\n\n67\n\n69\n\n71\n\n73\n\n75\n\n77\n\n79\n\n81\n\n83\n\nMonday, November 9, 2026\n\n0.01\n\n9 am\n\n69\n\n15\n\n10 am\n\n69\n\n15\n\n11 am\n\n69\n\n14\n\n12 pm\n\n68\n\n13\n\n1 pm\n\n67\n\n12\n\n2 pm\n\n67\n\n11\n\n3 pm\n\n67\n\n12\n\n4 pm\n\n66\n\n11\n\n5 pm\n\n66\n\n11\n\n6 pm\n\n66\n\n9\n\n7 pm\n\n66\n\n9\n\n8 pm\n\n65\n\n8\n\n9 pm\n\n63\n\n9\n\n10 pm\n\n62\n\n9\n\n11 pm\n\n63\n\n8\n\nTuesday, November 10, 2026\n\n12 am\n\n63\n\n7\n\n1 am\n\n63\n\n7\n\n2 am\n\n63\n\n7\n\n3 am\n\n62\n\n8\n\n4 am\n\n61\n\n8\n\n5 am\n\n61\n\n8\n\n6 am [...] 5 am\n\n61\n\n8\n\n6 am\n\n61\n\n8\n\n7 am\n\n61\n\n8\n\n8 am\n\n63\n\n8\n\n9 am\n\n66\n\n8\n\n10 am\n\n67\n\n8\n\n11 am\n\n69\n\n8\n\n12 pm\n\n70\n\n9\n\n1 pm\n\n71\n\n9\n\n2 pm\n\n72\n\n8\n\n3 pm\n\n72\n\n8\n\n4 pm\n\n71\n\n7\n\n5 pm\n\n69\n\n7\n\n6 pm\n\n67\n\n7\n\n7 pm\n\n65\n\n8\n\n8 pm\n\n64\n\n7\n\n9 pm\n\n64\n\n6\n\n10 pm\n\n64\n\n6\n\n11 pm\n\n62\n\n6\n\nWednesday, November 11, 2026\n\n12 am\n\n62\n\n6\n\n1 am\n\n61\n\n6\n\n2 am\n\n61\n\n5\n\n3 am\n\n61\n\n5\n\n4 am\n\n61\n\n5\n\n5 am\n\n61\n\n5\n\n6 am\n\n60\n\n5\n\n7 am\n\n61\n\n5\n\n8 am\n\n63\n\n6\n\n9 am\n\n67\n\n6\n\n10 am\n\n69\n\n7\n\n11 am\n\n72\n\n6\n\n12 pm\n\n74\n\n5\n\n1 pm\n\n75\n\n4\n\n2 pm\n\n76\n\n3\n\n3 pm\n\n76\n\n2\n\n4 pm",
+                "score": 0.86441374
+              },
+              {
+                "title": "Weather in Hanoi",
+                "url": "https://www.weatherapi.com/",
+                "source": "weatherapi.com",
+                "summary": "{'location': {'name': 'Hanoi', 'region': '', 'country': 'Vietnam', 'lat': 21.0333, 'lon': 105.85, 'tz_id': 'Asia/Bangkok', 'localtime_epoch': 1794285869, 'localtime': '2026-11-10 11:44'}, 'current': {'last_updated_epoch': 1794285000, 'last_updated': '2026-11-10 11:30', 'temp_c': 18.2, 'temp_f': 64.7, 'is_day': 1, 'condition': {'text': 'Overcast', 'icon': '//cdn.weatherapi.com/weather/64x64/day/122.png', 'code': 1009}, 'wind_mph': 10.1, 'wind_kph': 16.2, 'wind_degree': 328, 'wind_dir': 'NNW', 'pressure_mb': 1027.0, 'pressure_in': 30.33, 'precip_mm': 0.0, 'precip_in': 0.0, 'humidity': 61, 'cloud': 99, 'feelslike_c': 15.2, 'feelslike_f': 59.4, 'windchill_c': 18.2, 'windchill_f': 64.7, 'heatindex_c': 18.2, 'heatindex_f': 64.7, 'dewpoint_c': 10.6, 'dewpoint_f': 51.0, 'vis_km': 10.0, 'vis_miles': 6.0, 'uv': 6.6, 'gust_mph': 13.9, 'gust_kph': 22.3, 'will_it_rain': 0, 'chance_of_rain': 15, 'will_it_snow': 0, 'chance_of_snow': 0, 'wetbulb_c': 13.8, 'wetbulb_f': 56.8}}",
+                "score": 0.8241719
+              },
+              {
+                "title": "Agricultural Weather Forecast for November 10, 2026 | Ninh Binh: Rain returns from November 12 - ...",
+                "url": "https://www.youtube.com/watch?v=58fwyJCSgZg",
+                "source": "youtube.com",
+                "summary": "#weatherforecast #dbtt #vtvwdb #weather #weathernews #vtvweather #vtvweatherforecast #vtvweather\n\n► Get the fastest updates on weather and natural disasters at VTV Weather Forecast\n\n👉Subscribe to the channel now: \n✔️Follow VTVWDB at:\n\n📌Official Fanpage: \n📌Official Website: \n➥ Operating Unit: Weather and Environment Department, News Division - Vietnam Television Station, 43 Nguyen Chi Thanh Street, Ba Dinh District, Hanoi. [...] # Agricultural Weather Forecast for November 10, 2026 | Ninh Binh: Rain returns from November 12 - ...\n## Channel: VTV Thời Tiết\n923K subscribers\n26 likes\n\n### Description\n2,262 views\nPosted: 2026-11-09\nAgricultural weather forecast for November 10, 2026 | Ninh Binh to experience rain again from November 12-13 | VTVWDB\n\n🌈 VTV Weather Forecast is the official YouTube channel of the Weather and Environment Department, News Division – Vietnam Television. [...] [0:39] ngày 12 đến ngày 13 tháng 11, mưa dông sẽ quay trở lại khu vực này. Cục bộ có nơi có thể có mưa to, không chỉ tiêu thoát nước. Việc chăm sóc phục hồi những\n[0:47] chậu cúc sau ngập úng cũng rất quan trọng. Sau ngập úng, bộ rễ thường bị thiếu oxy, suy yếu, thậm chí có thể bị thối. Vì vậy, bà con cần thường xuyên\n[0:55] kiểm tra tình trạng cây, loại bỏ những lá bị dập nát, vàng úa hoặc có dấu hiệu thối bệnh. Không nên vội bón phân khi đất còn quá ẩm và bộ rễ chưa phục hồi.",
+                "score": 0.7185356
+              },
+              {
+                "title": "Tomorrow, 10 November: Rain in Da Nang, temperatures lower than today - Weathernews",
+                "url": "https://weathernews.com/news/en/global/2026/11/09/weather-327",
+                "source": "weathernews.com",
+                "summary": "# Tomorrow, 10 November: Rain in Da Nang, temperatures lower than today\n\nPublished : -\n\nFont Size:\n\n## Sunny in Hanoi, slightly cool in the evening\n\nOn Tuesday, 10 November, sunny weather is forecast in Hanoi, with a 10% chance of rain. The low is forecast to be 16°C, within the slightly cold range for northern Vietnam, while the high will be 22°C. The high is lower than today, while the low is about the same. [...] The low is 23°C and the high is 25°C. Both are lower than today. The temperature is forecast to be around 24°C in the evening. The mosquito index indicates high mosquito activity, so take full precautions when going out.\n\n## Sunny in Ho Chi Minh City, with a chance of afternoon rain\n\nSunny weather with occasional rain is forecast in Ho Chi Minh City on 10 November, with a 50% chance of rain. Rain is forecast in the afternoon, with a 90% chance, so bring an umbrella if you plan to go out then. [...] The low is 26°C and the high is 33°C, in the range of intense heat. The high is about the same as today. The temperature is forecast to be around 27°C in the evening. The WBGT index is at a high-caution level for the risk of heat stress. The mosquito index indicates that mosquitoes may be present, so be prepared as needed.\n\nCloudy\n\nCurrent conditions in Tokyo\n\nCloudy\n\n9°\n\nMax 11° Min 9°\n\n Cloudy, occasional rain\n\n  Tue, 10/11Max 14° Min 9°\n Sunny",
+                "score": 0.7036111
+              }
+            ]
+          }
+        }
+      ],
+      "ended_at": "2026-11-10T11:45:22"
+    }
+  ]
+}

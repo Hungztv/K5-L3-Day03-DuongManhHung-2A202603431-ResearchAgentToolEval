@@ -1,1 +1,4 @@
 version,author,changed_artifact,artifact_version,prompt_hash,tools_hash,reason,hypothesis,metric_before,metric_after,run_file
+v0,team,baseline,v0+peb1c8179815b+t5b22a2476d41,eb1c8179815b,5b22a2476d41,baseline,Đo hành vi ban đầu trước khi sửa prompt và tool declarations,,0.7333,runs/v0_B_base_gemini_20261110T100441490806.json
+v1,team,artifacts/system_prompt.md,v1+p6dbc3b87d391+t5b22a2476d41,6dbc3b87d391,5b22a2476d41,Sửa luật routing, hỏi lại khi thiếu thông tin và xác nhận trước khi gửi,Prompt rõ hơn sẽ cải thiện routing và giảm hành vi đoán hoặc gọi tool sai,0.7333,0.7000,runs/v1_B_base_groq_20261110T112533226884.json
+v2,team,artifacts/tools.yaml,v2+p6dbc3b87d391+te31296a848a9,p6dbc3b87d391,e31296a848a9,Làm rõ điều kiện dùng tool và quy ước arguments,Description chi tiết hơn sẽ cải thiện độ chính xác arguments và routing mà không cần sửa system prompt,0.7000,0.8500,runs/v2_B_base_groq_20261110T113357834864.json
