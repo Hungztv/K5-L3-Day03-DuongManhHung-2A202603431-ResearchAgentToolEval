@@ -12,6 +12,7 @@ from __future__ import annotations
 from agent import ResearchAgent
 from conftest import FakeResponse
 from providers.base import ModelResponse, ToolCall
+from providers.groq_provider import GroqProvider
 from tools import TOOL_FUNCTIONS
 
 format_tool = TOOL_FUNCTIONS["format"]
@@ -103,3 +104,30 @@ def test_agent_executes_tool_and_survives_unknown_or_bad_calls() -> None:
     assert run.tool_results[0]["result"]["awaiting_user"] is True
     assert run.tool_results[1]["error"] == "unknown_tool"
     assert run.tool_results[2]["result"]["error"] == "TypeError"
+
+
+def test_agent_blocks_side_effect_tools_when_requested(monkeypatch, fake_http) -> None:
+    monkeypatch.setenv("TELEGRAM_BOT_TOKEN", "test-token")
+    monkeypatch.setenv("TELEGRAM_CHAT_ID", "-100123")
+    calls = fake_http(FakeResponse({"ok": True}))
+    provider = FakeProvider([ToolCall("send", {"text": "Draft", "confirmed": True})])
+
+    run = ResearchAgent(provider, system_prompt="test").run(
+        [{"role": "user", "content": "Send the draft"}],
+        blocked_tools={"send"},
+    )
+
+    assert run.tool_results[0]["result"]["status"] == "blocked_by_eval_safety"
+    assert calls == []
+
+
+def test_groq_provider_accepts_legacy_misspelled_key_name(monkeypatch) -> None:
+    monkeypatch.delenv("GROQ_API_KEY", raising=False)
+    monkeypatch.delenv("GROQ_MODEL", raising=False)
+    monkeypatch.setenv("GROUQ_API_KEY", "test-key")
+
+    provider = GroqProvider()
+
+    assert provider.base_url == "https://api.groq.com/openai/v1"
+    assert provider.default_model == "openai/gpt-oss-20b"
+    assert provider.api_key_default is not None

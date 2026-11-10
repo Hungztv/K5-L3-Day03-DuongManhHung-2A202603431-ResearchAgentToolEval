@@ -21,7 +21,18 @@ Alternatives:
 OPENAI_API_KEY=...
 ANTHROPIC_API_KEY=...
 GEMINI_API_KEY=...
+GROQ_API_KEY=...
 ```
+
+Groq uses its OpenAI-compatible API. Optional model override:
+
+```bash
+GROQ_MODEL=openai/gpt-oss-20b
+python scripts/preflight_provider.py --provider groq
+```
+
+The provider temporarily accepts the misspelled `GROUQ_API_KEY` variable as a
+fallback; prefer the correctly spelled `GROQ_API_KEY` in `.env`.
 
 Preflight:
 
@@ -39,6 +50,11 @@ python scripts/preflight_provider.py --provider ollama --model qwen2.5:7b
 ```
 
 Tuỳ chọn trong `.env`: `OLLAMA_BASE_URL` (mặc định `http://localhost:11434/v1`), `OLLAMA_MODEL` (mặc định `qwen2.5:7b`).
+
+Model có hậu tố `:cloud` chạy qua Ollama Cloud, không phải model offline trên máy;
+cần đăng nhập Ollama và tài khoản có usage credits. Nếu mục tiêu là Small Local
+Model Challenge, dùng model đã tải về có kích thước tối đa 8B, ví dụ
+`qwen2.5:7b` hoặc `llama3.2:3b`.
 
 ## 2. Tavily — `lookup`
 

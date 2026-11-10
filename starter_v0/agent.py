@@ -28,7 +28,13 @@ class ResearchAgent:
         self.tools = tools or []
         self.model = model
 
-    def run(self, user_messages: list[dict[str, str]], *, tool_choice: Any | None = None) -> AgentRun:
+    def run(
+        self,
+        user_messages: list[dict[str, str]],
+        *,
+        tool_choice: Any | None = None,
+        blocked_tools: set[str] | None = None,
+    ) -> AgentRun:
         messages = [{"role": "system", "content": self.system_prompt}, *user_messages]
         response = self.provider.complete(
             messages,
@@ -39,6 +45,13 @@ class ResearchAgent:
         )
         results: list[dict[str, Any]] = []
         for call in response.tool_calls:
+            if blocked_tools and call.name in blocked_tools:
+                results.append({
+                    "tool": call.name,
+                    "args": call.args,
+                    "result": {"status": "blocked_by_eval_safety"},
+                })
+                continue
             func = TOOL_FUNCTIONS.get(call.name)
             if not func:
                 results.append({"tool": call.name, "error": "unknown_tool"})

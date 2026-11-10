@@ -16,6 +16,7 @@ from .format.tool import render_digest
 from .policy.tool import search_company_policy
 from .social_search.tool import search_tweets
 from .send.tool import send_telegram
+from .source_audit.tool import audit_sources
 from .lookup.tool import web_search
 
 
@@ -32,11 +33,10 @@ TOOL_FUNCTIONS = {
     "fetch": read_url,
     "format": render_digest,
     "send": send_telegram,
+    "source_audit": audit_sources,
     "policy": search_company_policy,
     "papers": arxiv_search,
     "paper_text": get_arxiv_paper_text,
-    # TODO(student): register your new tool here, e.g. "my_tool": my_tool_function,
-    # then declare it in artifacts/tools.yaml and run `pytest tests/test_tool_contract.py`.
 }
 
 
@@ -53,4 +53,3 @@ def to_openai_tools(declarations: list[dict[str, Any]]) -> list[dict[str, Any]]:
             "parameters": item.get("parameters", {"type": "object", "properties": {}}),
         },
     } for item in declarations]
-

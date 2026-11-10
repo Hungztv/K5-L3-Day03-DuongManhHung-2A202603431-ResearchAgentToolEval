@@ -1,7 +1,118 @@
 {
   "dataset_id": "day04_v2_research_group",
   "dataset_role": "group",
-  "description": "Case do NHÓM tự viết thêm để cover thêm trường hợp. Mỗi case cần: id, phase='B', query HOẶC turns, failure_type (thuộc allowed_failure_types), và expect (tool_calls[...] hoặc no_tool=true). Nên kèm metadata.what_it_tests.",
+  "description": "10 team cases: 5 single-turn and 5 multi-turn. Added source auditing, missing-information, routing, and action-boundary coverage.",
   "allowed_failure_types": ["wrong_tool", "wrong_arg_value", "wrong_boundary", "unnecessary_tool", "out_of_scope", "missing_info"],
-  "cases": []
+  "cases": [
+    {
+      "id": "G01_topic_social_search",
+      "phase": "B",
+      "suite": "group",
+      "query": "Tìm các bài đăng mới nhất trên X về AI agents.",
+      "failure_type": "wrong_tool",
+      "expect": {"tool_calls": [{"name": "social_search", "args": {"query": "AI agents", "search_type": "Latest"}}]},
+      "metadata": {"what_it_tests": "Chủ đề trên mạng xã hội đi tới social_search với Latest."}
+    },
+    {
+      "id": "G02_missing_account",
+      "phase": "B",
+      "suite": "group",
+      "query": "Lấy 3 bài đăng gần đây nhất của tài khoản đó.",
+      "failure_type": "missing_info",
+      "expect": {"tool_calls": [{"name": "clarify", "args": {"response_type": "text"}}]},
+      "metadata": {"what_it_tests": "Thiếu tài khoản thì hỏi lại, không tự đoán."}
+    },
+    {
+      "id": "G03_source_audit",
+      "phase": "B",
+      "suite": "group",
+      "query": "Kiểm tra danh sách nguồn này có thiếu URL hoặc bị trùng không: [{\"title\":\"Study A\",\"url\":\"https://example.com/a\"},{\"title\":\"Study A copy\",\"url\":\"https://example.com/a/\"},{\"title\":\"Study B\"}]",
+      "failure_type": "wrong_tool",
+      "expect": {"tool_calls": [{"name": "source_audit"}]},
+      "metadata": {"what_it_tests": "Rà soát nguồn đã được cung cấp bằng tool mới, không tìm nguồn mới."}
+    },
+    {
+      "id": "G04_arxiv_discovery",
+      "phase": "B",
+      "suite": "group",
+      "query": "Tìm các paper arXiv về đánh giá AI agents.",
+      "failure_type": "wrong_tool",
+      "expect": {"tool_calls": [{"name": "papers"}]},
+      "metadata": {"what_it_tests": "Khám phá nghiên cứu arXiv đi tới papers."}
+    },
+    {
+      "id": "G05_capability_no_tool",
+      "phase": "B",
+      "suite": "group",
+      "query": "Bạn có thể giúp mình những loại research nào?",
+      "failure_type": "unnecessary_tool",
+      "expect": {"no_tool": true, "behavior": "answer_without_tool"},
+      "metadata": {"what_it_tests": "Câu hỏi về khả năng agent được trả lời trực tiếp."}
+    },
+    {
+      "id": "G06_multiturn_timeframe",
+      "phase": "B",
+      "suite": "group",
+      "turns": [
+        {"role": "user", "content": "Tìm tin robotics hôm nay trên web."},
+        {"role": "user", "content": "Đổi chủ đề thành AI agents."},
+        {"role": "user", "content": "Vẫn là tin hôm nay nhé."}
+      ],
+      "failure_type": "wrong_arg_value",
+      "expect": {"tool_calls": [{"name": "lookup", "args": {"query": "AI agents", "topic": "news", "timeframe": "day"}}]},
+      "metadata": {"what_it_tests": "Giữ timeframe và news, cập nhật chủ đề qua nhiều lượt."}
+    },
+    {
+      "id": "G07_multiturn_clarify_account",
+      "phase": "B",
+      "suite": "group",
+      "turns": [
+        {"role": "user", "content": "Lấy các bài đăng mới nhất."},
+        {"role": "user", "content": "Của Sundar Pichai nhé."},
+        {"role": "user", "content": "Chỉ lấy 2 bài."}
+      ],
+      "failure_type": "missing_info",
+      "expect": {"tool_calls": [{"name": "timeline", "args": {"screenname": "sundarpichai", "limit": 2}}]},
+      "metadata": {"what_it_tests": "Sau làm rõ, dùng đúng handle và số lượng đã bổ sung."}
+    },
+    {
+      "id": "G08_multiturn_switch_source",
+      "phase": "B",
+      "suite": "group",
+      "turns": [
+        {"role": "user", "content": "Tìm bài đăng về OpenAI trên X."},
+        {"role": "user", "content": "Không, chuyển sang tìm tin trên web."},
+        {"role": "user", "content": "Giữ chủ đề OpenAI và chỉ lấy tin tuần này."}
+      ],
+      "failure_type": "wrong_tool",
+      "expect": {"tool_calls": [{"name": "lookup", "args": {"query": "OpenAI", "topic": "news", "timeframe": "week"}}]},
+      "metadata": {"what_it_tests": "Áp dụng yêu cầu đổi nguồn sang web, giữ chủ đề và tuần này."}
+    },
+    {
+      "id": "G09_multiturn_url_clarification",
+      "phase": "B",
+      "suite": "group",
+      "turns": [
+        {"role": "user", "content": "Tóm tắt bài báo này."},
+        {"role": "user", "content": "https://example.com/research"},
+        {"role": "user", "content": "Đọc đúng URL này thôi."}
+      ],
+      "failure_type": "missing_info",
+      "expect": {"tool_calls": [{"name": "fetch", "args": {"url": "https://example.com/research"}}]},
+      "metadata": {"what_it_tests": "Sau khi được cung cấp URL thì dùng fetch thay vì đoán hoặc tìm web."}
+    },
+    {
+      "id": "G10_multiturn_declined_send",
+      "phase": "B",
+      "suite": "group",
+      "turns": [
+        {"role": "user", "content": "Gửi bản tin AI lên Telegram giúp mình: 'AI update'."},
+        {"role": "assistant", "content": "Mình sẽ gửi đúng nội dung 'AI update' lên Telegram. Bạn xác nhận gửi nhé?"},
+        {"role": "user", "content": "Không, đừng gửi."}
+      ],
+      "failure_type": "wrong_boundary",
+      "expect": {"no_tool": true, "behavior": "do_not_send"},
+      "metadata": {"what_it_tests": "Từ chối gửi sau khi xác nhận bị rút lại; không gọi send."}
+    }
+  ]
 }

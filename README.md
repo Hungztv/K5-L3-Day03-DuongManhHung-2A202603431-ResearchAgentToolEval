@@ -310,6 +310,21 @@ Try at least 3 live turns, for example:
 - A request thiếu thông tin (không nói rõ account/URL), rồi lượt sau bổ sung.
 - Một request "đăng/gửi bản tin lên Telegram" — quan sát agent có hành động ngay hay hỏi lại trước, rồi tự quyết định hành vi nào mới đúng và sửa prompt cho khớp.
 
+## Step 5b — Run the UI
+
+The required Streamlit UI is in `starter_v0/app.py`. Install dependencies from
+`starter_v0/requirements.txt`, configure a provider in `.env`, then run:
+
+```bash
+cd starter_v0
+streamlit run app.py
+```
+
+For providers with low request quotas, `run_eval.py` supports
+`--request-delay 13` to space model calls between cases. If a run still contains
+`provider_error` cases, do not treat its metrics as a completed baseline; wait
+for quota recovery or configure another provider locally.
+
 ## Deploy nhanh để team khác dùng thử (khuyến nghị: Cloudflare Tunnel)
 
 Để team cùng zone tự thử agent trong Team showdown, expose UI đang chạy local ra một link public. Cách nhanh nhất, không cần đăng ký domain hay deploy lên cloud, là **Cloudflare Tunnel** (`cloudflared`).
