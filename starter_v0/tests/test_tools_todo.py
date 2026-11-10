@@ -188,3 +188,13 @@ def test_source_audit_marks_invalid_urls() -> None:
     result = TOOL_FUNCTIONS["source_audit"](items=[{"title": "Source", "url": "ftp://example.com/a"}])
 
     assert result["items"][0]["issues"] == ["invalid_url"]
+
+
+def test_source_audit_normalizes_fragment_and_trailing_slash() -> None:
+    result = TOOL_FUNCTIONS["source_audit"](items=[
+        {"title": "Source A", "url": "https://EXAMPLE.com/a/#section"},
+        {"title": "Source A duplicate", "url": "https://example.com/a"},
+    ])
+
+    assert result["items"][1]["issues"] == ["duplicate_url"]
+    assert result["items"][1]["duplicate_of"] == 0
