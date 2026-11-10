@@ -1,0 +1,16 @@
+{
+  "version": "v0",
+  "artifact_version": "v0+p6dbc3b87d391+te31296a848a9",
+  "prompt_hash": "6dbc3b87d391d93150eb4d045c375e77f0dd38e3fad7fa2b64b75d08ec6c6199",
+  "tools_hash": "e31296a848a9c5d3e64e2b4738fe206a36887f430f80f30b6119b64de4d0d427",
+  "provider": "groq",
+  "model": null,
+  "system_prompt": "C:\\Users\\duong\\K5-L3-Day03-DuongManhHung-2A202603431-ResearchAgentToolEval\\starter_v0\\artifacts\\system_prompt.md",
+  "tools": "C:\\Users\\duong\\K5-L3-Day03-DuongManhHung-2A202603431-ResearchAgentToolEval\\starter_v0\\artifacts\\tools.yaml",
+  "history_window": 5,
+  "max_tool_rounds": 4,
+  "created_at": "2026-11-10T11:43:33",
+  "updated_at": "2026-11-10T11:43:33",
+  "path": "C:\\Users\\duong\\K5-L3-Day03-DuongManhHung-2A202603431-ResearchAgentToolEval\\starter_v0\\transcripts\\v0_groq_20261110T114333492405.transcript.json",
+  "turns": []
+}
