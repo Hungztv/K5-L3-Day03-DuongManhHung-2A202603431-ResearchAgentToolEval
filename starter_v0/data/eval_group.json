@@ -1,0 +1,111 @@
+{
+  "dataset_id": "day04_v2_research_group",
+  "dataset_role": "group",
+  "description": "Case do NHÓM tự viết thêm để cover thêm trường hợp. Mỗi case cần: id, phase='B', query HOẶC turns, failure_type (thuộc allowed_failure_types), và expect (tool_calls[...] hoặc no_tool=true). Nên kèm metadata.what_it_tests.",
+  "allowed_failure_types": ["wrong_tool", "wrong_arg_value", "wrong_boundary", "unnecessary_tool", "out_of_scope", "missing_info"],
+  "cases": [
+    {
+      "id": "G_source_check_citation_metadata",
+      "phase": "B",
+      "query": "Rà soát metadata và URL của các citation sau, phát hiện link trùng; không cần truy cập web: [{\"title\":\"OpenAI Research\",\"url\":\"https://openai.com/research/\",\"source\":\"OpenAI\"},{\"title\":\"Bản sao OpenAI\",\"url\":\"https://openai.com/research/#overview\"}]",
+      "failure_type": "wrong_tool",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "source_check",
+            "args": {}
+          }
+        ]
+      },
+      "metadata": {"what_it_tests": "Routes to the new local citation checker when the user asks to inspect existing citation metadata without requesting live page verification."}
+    },
+    {
+      "id": "G_missing_handle_asks_clarify",
+      "phase": "B",
+      "query": "Tóm tắt 5 tweet mới nhất giúp mình",
+      "failure_type": "missing_info",
+      "expect": {"tool_calls": [{"name": "clarify", "args": {"response_type": "text"}}]},
+      "metadata": {"what_it_tests": "Thiếu tên tài khoản thì hỏi lại thay vì tự đoán."}
+    },
+    {
+      "id": "G_timeline_named_account",
+      "phase": "B",
+      "query": "Lấy 3 bài đăng gần đây từ tài khoản @sama",
+      "failure_type": "wrong_arg_value",
+      "expect": {"tool_calls": [{"name": "timeline", "args": {"screenname": "sama", "limit": 3}}]},
+      "metadata": {"what_it_tests": "Timeline cần tài khoản cụ thể, screenname bỏ ký tự @ và giữ đúng limit."}
+    },
+    {
+      "id": "G_lookup_today_news",
+      "phase": "B",
+      "query": "Tìm 3 tin tức mới nhất hôm nay về chip AI",
+      "failure_type": "wrong_arg_value",
+      "expect": {"tool_calls": [{"name": "lookup", "args": {"topic": "news", "timeframe": "day"}}]},
+      "metadata": {"what_it_tests": "Tin web mới nhất hôm nay phải dùng lookup với topic=news và timeframe=day."}
+    },
+    {
+      "id": "G_send_requires_confirmation",
+      "phase": "B",
+      "query": "Gửi bản tin sau lên Telegram: 'Có 3 tin AI đáng chú ý hôm nay.'",
+      "failure_type": "wrong_boundary",
+      "expect": {"tool_calls": [{"name": "clarify", "args": {"response_type": "yes_no"}}]},
+      "metadata": {"what_it_tests": "Hỏi xác nhận có/không trước khi gọi send."}
+    },
+    {
+      "id": "G_multiturn_carry_news_topic",
+      "phase": "B",
+      "turns": [
+        {"role": "user", "content": "Tin tức AI hôm nay có gì?"},
+        {"role": "user", "content": "Còn robotics thì sao?"},
+        {"role": "user", "content": "Chỉ tìm robotics, vẫn là tin hôm nay."}
+      ],
+      "failure_type": "wrong_arg_value",
+      "expect": {"tool_calls": [{"name": "lookup", "args": {"query": "robotics", "topic": "news", "timeframe": "day"}}]},
+      "metadata": {"what_it_tests": "Giữ topic và timeframe từ ngữ cảnh khi đổi chủ đề ở lượt mới nhất."}
+    },
+    {
+      "id": "G_multiturn_fill_account",
+      "phase": "B",
+      "turns": [
+        {"role": "user", "content": "Tóm tắt 5 tweet mới nhất giúp mình."},
+        {"role": "user", "content": "Của Elon Musk nhé."}
+      ],
+      "failure_type": "missing_info",
+      "expect": {"tool_calls": [{"name": "timeline", "args": {"screenname": "elonmusk", "limit": 5}}]},
+      "metadata": {"what_it_tests": "Dùng handle người dùng bổ sung và giữ số lượng từ lượt trước."}
+    },
+    {
+      "id": "G_multiturn_fill_url",
+      "phase": "B",
+      "turns": [
+        {"role": "user", "content": "Tóm tắt bài viết này giúp mình."},
+        {"role": "user", "content": "Đây là URL: https://openai.com/research/"}
+      ],
+      "failure_type": "missing_info",
+      "expect": {"tool_calls": [{"name": "fetch", "args": {"url": "https://openai.com/research/"}}]},
+      "metadata": {"what_it_tests": "Chờ URL còn thiếu rồi đọc đúng URL ở lượt sau."}
+    },
+    {
+      "id": "G_multiturn_social_search_correction",
+      "phase": "B",
+      "turns": [
+        {"role": "user", "content": "Tìm 5 bài mới nhất về OpenAI agents trên X."},
+        {"role": "user", "content": "Đổi thành 2 bài nổi bật nhất."}
+      ],
+      "failure_type": "wrong_arg_value",
+      "expect": {"tool_calls": [{"name": "social_search", "args": {"query": "OpenAI agents", "search_type": "Top", "limit": 2}}]},
+      "metadata": {"what_it_tests": "Giữ query, cập nhật sort thành Top và limit thành 2."}
+    },
+    {
+      "id": "G_multiturn_switch_web_to_social",
+      "phase": "B",
+      "turns": [
+        {"role": "user", "content": "Tìm tin tức AI hôm nay trên web."},
+        {"role": "user", "content": "Không, chỉ tìm bài đăng X mới nhất về AI agents."}
+      ],
+      "failure_type": "wrong_tool",
+      "expect": {"tool_calls": [{"name": "social_search", "args": {"query": "AI agents", "search_type": "Latest"}}]},
+      "metadata": {"what_it_tests": "Đổi sang yêu cầu bài đăng X phải chuyển từ lookup sang social_search."}
+    }
+  ]
+}

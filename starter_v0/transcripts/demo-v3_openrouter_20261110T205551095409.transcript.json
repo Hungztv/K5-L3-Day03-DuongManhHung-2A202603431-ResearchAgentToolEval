@@ -1,0 +1,512 @@
+{
+  "transcript_id": "demo-v3_openrouter_20261110T205551095409",
+  "version": "demo-v3",
+  "artifact_version": "demo-v3+p10d60f1c65e2+t21ca31f8739e",
+  "prompt_hash": "10d60f1c65e22985a458af90c14b07869df7694c0a724a2d1f378580501541e3",
+  "tools_hash": "21ca31f8739e44f499ac00a673f25230e8d7fd97e00fa70855feef1d2d4b0cbf",
+  "provider": "openrouter",
+  "model": null,
+  "system_prompt": "D:\\VinUni\\K5-L3-Day03-DuongManhHung-2A202603431-ResearchAgentToolEval\\starter_v0\\artifacts\\system_prompt.md",
+  "tools": "D:\\VinUni\\K5-L3-Day03-DuongManhHung-2A202603431-ResearchAgentToolEval\\starter_v0\\artifacts\\tools.yaml",
+  "history_window": 5,
+  "max_tool_rounds": 4,
+  "created_at": "2026-11-10T20:55:51",
+  "updated_at": "2026-11-10T21:02:18",
+  "turns": [
+    {
+      "turn_index": 1,
+      "started_at": "2026-11-10T20:56:18",
+      "user": "Tìm kiếm link của youtube độ mixi",
+      "status": "answered",
+      "assistant_text": "Tôi không thể tìm thấy thông tin về Độ Mixi trên mạng xã hội. Có thể có vấn đề với việc truy cập dữ liệu. Bạn có muốn tôi tìm kiếm thông tin khác không?",
+      "rounds": [
+        {
+          "round": 1,
+          "assistant_text": null,
+          "tool_calls": [
+            {
+              "name": "social_search",
+              "args": {
+                "query": "Độ Mixi",
+                "search_type": "Top"
+              }
+            }
+          ],
+          "tool_results": [
+            {
+              "tool": "social_search",
+              "args": {
+                "query": "Độ Mixi",
+                "search_type": "Top"
+              },
+              "result": {
+                "tool": "search_tweets",
+                "error": "HTTPError",
+                "message": "403 Client Error: Forbidden for url: https://twitter-api45.p.rapidapi.com/search.php?query=%C4%90%E1%BB%99+Mixi&search_type=Top"
+              }
+            }
+          ]
+        },
+        {
+          "round": 2,
+          "assistant_text": "Tôi không thể tìm thấy thông tin về Độ Mixi trên mạng xã hội. Có thể có vấn đề với việc truy cập dữ liệu. Bạn có muốn tôi tìm kiếm thông tin khác không?",
+          "tool_calls": [],
+          "tool_results": []
+        }
+      ],
+      "tool_events": [
+        {
+          "tool": "social_search",
+          "args": {
+            "query": "Độ Mixi",
+            "search_type": "Top"
+          },
+          "result": {
+            "tool": "search_tweets",
+            "error": "HTTPError",
+            "message": "403 Client Error: Forbidden for url: https://twitter-api45.p.rapidapi.com/search.php?query=%C4%90%E1%BB%99+Mixi&search_type=Top"
+          }
+        }
+      ],
+      "ended_at": "2026-11-10T20:56:25"
+    },
+    {
+      "turn_index": 2,
+      "started_at": "2026-11-10T20:57:54",
+      "user": "Tin tức hôm nay có gì",
+      "status": "answered",
+      "assistant_text": "Dưới đây là một số tin tức nổi bật hôm nay (10/11):\n\n1. **Bộ trưởng Pete Hegseth đối mặt sức ép luận tội**  \n   Hạ viện Mỹ chuẩn bị xem xét 8 cáo buộc luận tội Bộ trưởng Chiến tranh Pete Hegseth. Ngoài ra, Iran cảnh báo về nguy cơ Mỹ tiếp tục leo thang xung đột, và Nga tiến hành các cuộc tập kích vào hạ tầng năng lượng Ukraine. [Đọc thêm](https://vtcnews.vn/tin-nong-the-gioi-hom-nay-10-11-bo-truong-pete-hegseth-doi-mat-suc-ep-luan-toi-ar1050398.html) từ VTC News.\n\n2. **Đàm phán Mỹ - Nga - Ukraine tại UAE**  \n   Vòng đàm phán ba bên giữa Mỹ, Nga và Ukraine sẽ bắt đầu tại Các Tiểu vương quốc Ả Rập thống nhất (UAE) hôm nay, với hy vọng tạo bước đột phá trong nỗ lực chấm dứt xung đột. [Xem chi tiết](https://tamdamedia.eu/tin-tuc-the-gioi-10-11-kha-nang-luan-toi-bo-truong-chien-tranh-m) từ Tamda Media.\n\n3. **Vụ nổ tại nhà máy thép ở Thổ Nhĩ Kỳ**  \n   Một vụ nổ lớn xảy ra tại nhà máy thép ở Thổ Nhĩ Kỳ khiến 17 người thiệt mạng và 12 người bị thương. Tổng thống Erdogan cam kết điều tra nguyên nhân vụ việc. [Thông tin thêm](https://tin.skydoor.net/news/the-gioi-tin-tuc-the-gioi-1011-kha-nang-luan-toi-bo-truong-chien-8425119) từ Sky Tin.\n\n4. **Tai nạn giao thông tại TP.HCM**  \n   Một vụ tai nạn giao thông nghiêm trọng xảy ra khi xe máy lao lên vỉa hè, khiến một người đàn ông tử vong tại chỗ. [Chi tiết vụ việc](https://baoxaydung.vn/tin-tuc-tai-nan-giao-thong-moi-nhat-hom-nay-10-11-2026-19226111007124908.htm) từ Báo Xây Dựng.\n\n5. **Thời tiết và giá cả hôm nay**  \n   Lãi suất ngân hàng tiếp tục giảm, giá vàng và bạc có sự biến động. [Xem thêm](https://giadinhmoi.vn/tin-tuc-thoi-tiet-dem-nay-va-ngay-mai-11-11-2026-moi-nhat-d100689.html) từ Gia Đình Mới.\n\nNếu bạn cần thêm thông tin chi tiết về một tin tức cụ thể nào, hãy cho tôi biết!",
+      "rounds": [
+        {
+          "round": 1,
+          "assistant_text": null,
+          "tool_calls": [
+            {
+              "name": "lookup",
+              "args": {
+                "query": "tin tức hôm nay",
+                "topic": "news",
+                "timeframe": "day"
+              }
+            }
+          ],
+          "tool_results": [
+            {
+              "tool": "lookup",
+              "args": {
+                "query": "tin tức hôm nay",
+                "topic": "news",
+                "timeframe": "day"
+              },
+              "result": {
+                "tool": "web_search",
+                "query": "tin tức hôm nay",
+                "topic": "news",
+                "timeframe": "day",
+                "items": [
+                  {
+                    "title": "Tin nóng thế giới hôm nay 10/11: Bộ trưởng Pete Hegseth đối mặt sức ép luận tội",
+                    "url": "https://vtcnews.vn/tin-nong-the-gioi-hom-nay-10-11-bo-truong-pete-hegseth-doi-mat-suc-ep-luan-toi-ar1050398.html",
+                    "source": "vtcnews.vn",
+                    "summary": "Trong bản tin thế giới mới nhất hôm nay 10/11, dư luận quốc tế đặc biệt quan tm đến việc Hạ viện Mỹ chuẩn bị xem xét 8 cáo buộc luận tội Bộ trưởng Chiến tranh Pete Hegseth.\n\nNgoài ra, cảnh báo cứng rắn của Iran trước nguy cơ Mỹ tiếp tục leo thang xung đột, các cuộc tập kích của Nga nhằm vào hạ tầng năng lượng và cơ sở công nghiệp quốc phòng Ukraine, cùng những chính sách mới của Cuba nhằm thúc đẩy khoa học, công nghệ và đổi mới sáng tạo cũng là nội dung đáng chú ý. [...] Tổng thống Mỹ Donald Trump cho biết FBI đang xem xét vụ việc liên quan đến CEO Jensen Huang, trong khi đó, Nvidia đối mặt với vụ kiện tập thể từ cổ đông.\n\n### Các nước chu u khởi động diễn tập triển khai lực lượng tại Ukraine\n\nLiên minh đa quốc gia khởi động diễn tập quy mô lớn đầu tiên tại Ba Lan vào ngày 9/11, chuẩn bị cho triển khai lực lượng tới Ukraine sau chiến sự.\n\n### Ông Trump tuyên bố cuộc chiến với Iran 'cơ bản đã kết thúc' [...] Ngày 9/11, Bộ Quốc phòng Nga tuyên bố qun đội nước này tiến hành các cuộc tập kích tầm xa nhằm vào hạ tầng năng lượng và cơ sở sản xuất máy bay không người lái (UAV) của Ukraine tại nhiều khu vực. Theo tuyên bố của Moskva, các trạm biến áp cung cấp điện cho lực lượng qun sự và tổ hợp công nghiệp quốc phòng Ukraine bị tấn công tại 4 tỉnh, gồm Kiev, Dnipropetrovsk, Cherkasy và Vinnitsa.",
+                    "score": 0.63098115
+                  },
+                  {
+                    "title": "Tin tức thế giới 10-11: Khả năng luận tội Bộ trưởng Chiến tranh Mỹ; Ông Trump cáo buộc gian lận bầu cử - TamdaMedia",
+                    "url": "https://tamdamedia.eu/tin-tuc-the-gioi-10-11-kha-nang-luan-toi-bo-truong-chien-tranh-m",
+                    "source": "tamdamedia.eu",
+                    "summary": "Ông Trump bắt đầu có những phát ngôn mới về kết quả bầu cử giữa kỳ - Ảnh: REUTERS\n\n## Hôm nay đàm phán Mỹ - Nga - Ukraine tại UAE\n\nHôm nay, 10-11, vòng đàm phán ba bên giữa Mỹ, Nga và Ukraine sẽ bắt đầu tại Các Tiểu vương quốc Ả Rập thống nhất (UAE), dự kiến kéo dài đến ngày 11-11.\n\nTổng thống Trump ngày 9-11 nhận định các cuộc đàm phán do Washington làm trung gian tại thủ đô Abu Dhabi (UAE) trong tuần này có thể tạo bước đột phá trong nỗ lực chấm dứt xung đột Nga - Ukraine. [...] Tết giữa trời u\n\nHomepageTRANG CHỦHot NewsNóngVideoVideoFacebookFacebookYoutubeYoutube\n\nHomepageTrang chủ\nHot NewsTin nóng\nVideoVideo\nFacebookFacebook\nYoutubeYoutube\n\n# Tin tức thế giới 10-11: Khả năng luận tội Bộ trưởng Chiến tranh Mỹ; Ông Trump cáo buộc gian lận bầu cử\n\nTamda Media,\n\nNghị sĩ Mỹ khởi động thủ tục luận tội Bộ trưởng Chiến tranh; Ông Trump cáo buộc bầu cử giữa kỳ gian lận; Hôm nay đàm phán Mỹ - Nga - Ukraine tại UAE… là một số tin tức thế giới đáng chú ý sáng 10-11. [...] Hai vụ việc hiện đang được điều tra.\n\n## Nổ \"như tận thế\" tại nhà máy thép Thổ Nhĩ Kỳ\n\nMột vụ nổ lớn xảy ra tại nhà máy thép ở miền ty Thổ Nhĩ Kỳ hôm 9-11 khiến 17 người thiệt mạng và 12 người bị thương.\n\nTổng thống Thổ Nhĩ Kỳ Recep Tayyip Erdogan cam kết làm rõ nguyên nhn và xác định trách nhiệm của những người liên quan.\n\nTheo giới chức địa phương, vụ nổ xảy ra vào khoảng giữa trưa (giờ địa phương) tại nhà máy thép HABAS, cách thành phố cảng Izmir khoảng 60 km về phía bắc.",
+                    "score": 0.59796065
+                  },
+                  {
+                    "title": "Tin tức thế giới 10-11: Khả năng luận tội Bộ trưởng Chiến tranh Mỹ; Ông Trump cáo buộc gian lận bầu cử | Sky Tin",
+                    "url": "https://tin.skydoor.net/news/the-gioi-tin-tuc-the-gioi-1011-kha-nang-luan-toi-bo-truong-chien-8425119",
+                    "source": "tin.skydoor.net",
+                    "summary": "Bỏ qua điều hướng\n\nSkydoor\n\nSky Tin - Tin tức địa phương toàn cầu 24h mới nhất!\n\nXem tin theo cách của bạn >>\n\n\n\n# Tin tức thế giới 10-11: Khả năng luận tội Bộ trưởng Chiến tranh Mỹ; Ông Trump cáo buộc gian lận bầu cử\n\nÔng Trump tuyên bố có thể nối lại tấn công Iran bất cứ lúc nào; Hôm nay đàm phán Mỹ - Nga - Ukraine tại UAE.\n\nĐọc tin gốc tại tuoitre.vn →\n\n## Tin tức Mỹ mới nhất hôm nay\n\n[](\n\n### Vụ CEO Nvidia ngoại tình: Ông Trump tin ông Jensen Huang; FBI vào cuộc điều tra [...] Xem tóm tắt nhanh\n\n## Tin tức Thế Giới mới nhất hôm nay\n\n[](\n\n### Nghị sĩ đảng Cộng hòa đề xuất luận tội Bộ trưởng Chiến tranh Mỹ Pete Hegseth về cuộc chiến Iran\n\n1 giờ trước–anninhthudo.vnanninhthudo.vn\n\nXem tóm tắt nhanh\n\n[](\n\n### Bộ trưởng Quốc phòng Mỹ đứng trước nguy cơ bị Hạ viện luận tội\n\n1 giờ trước–hanoimoi.vnhanoimoi.vn\n\nXem tóm tắt nhanh\n\n[](\n\n### Chuyên gia chỉ ra nút thắt khiến lực lượng Cổng Sắt của Mỹ khó chặn dòng vũ khí vào Iran\n\n1 giờ trước–baotintuc.vnbaotintuc.vn",
+                    "score": 0.5957048
+                  },
+                  {
+                    "title": "Tin tức tai nạn giao thông mới nhất hôm nay 10/11/2026",
+                    "url": "https://baoxaydung.vn/tin-tuc-tai-nan-giao-thong-moi-nhat-hom-nay-10-11-2026-19226111007124908.htm",
+                    "source": "baoxaydung.vn",
+                    "summary": "Chiều 9/11, Công an TP.HCM khám nghiệm hiện trường, điều tra nguyên nhn vụ tai nạn khi xe máy lao lên vỉa hè, tông vào cột biển báo khiến người đàn ông tử vong tại chỗ.\n\nTheo thông tin ban đầu, hơn 12h cùng ngày, ông Trịnh Mỹ Phước (58 tuổi, quê tỉnh Trà Vinh cũ) điều khiển xe máy lưu thông trên đường số 16 (phường Linh Xun), theo hướng từ đường số 17 đi đường Lê Văn Chí. Khi vừa qua khỏi Trường THPT Linh Trung, xe máy bất ngờ lao lên vỉa hè bên phải, tông vào cột biển thông báo. [...] Theo đó, khoảng 8h30 cùng ngày, một máy cày kéo theo rơ-moóc chở máy xúc Kobe lưu thông qua cầu Tn Thành. Khi đoàn phương tiện di chuyển đến giữa cầu, nhịp cầu bất ngờ gãy và đổ xuống kênh. Sự cố xảy ra đột ngột khiến máy cày, rơ-moóc và máy xúc rơi xuống dòng kênh bên dưới. May mắn, vụ việc không gy thiệt hại về người. [...] Theo đó, vào khoảng 14h cùng ngày, một chiếc ô tô con quay đầu trên QL7, đoạn qua địa bàn xã Bảo Thành cũ, nay là xã Hợp Minh. Khi xe vừa ra giữa đường, một chiếc xe máy tay ga chở theo 3 người lao với tốc độ nhanh đã đm thẳng vào hông xe ô tô. Cú va chạm cực mạnh khiến chiếc xe máy văng lên và nằm gọn gàng trên nóc ô tô. Phần kính sau xe ô tô bị vỡ nát, hông xe bị hư hỏng nặng.",
+                    "score": 0.5863576
+                  },
+                  {
+                    "title": "Tin tức thời tiết đêm nay và ngày mai 11/11/2026 mới nhất",
+                    "url": "https://giadinhmoi.vn/tin-tuc-thoi-tiet-dem-nay-va-ngay-mai-11-11-2026-moi-nhat-d100689.html",
+                    "source": "giadinhmoi.vn",
+                    "summary": "Lãi suất ngn hàng hôm nay 10/11/2026: Nhiều nhà băng tiếp tục giảm, mức cao nhất lên 7,4%/năm\n\nLãi suất ngn hàng hôm nay 10/11/2026: Nhiều nhà băng tiếp tục giảm, mức cao nhất lên 7,4%/năm\n\nGiá bạc hôm nay 10/11/2026: Bạc thế giới tăng lên 53,54 USD/ounce, Phú Quý bán ra 1,629 triệu đồng/lượng\n\nGiá bạc hôm nay 10/11/2026: Bạc thế giới tăng lên 53,54 USD/ounce, Phú Quý bán ra 1,629 triệu đồng/lượng\n\nGiá vàng hôm nay 10/11/2026: Vàng thế giới vượt 4.100 USD/ounce, SJC lên 141,2 triệu đồng/lượng [...] Giá vàng hôm nay 10/11/2026: Vàng thế giới vượt 4.100 USD/ounce, SJC lên 141,2 triệu đồng/lượng\n\n5 dấu hiệu cảnh báo viêm da tiếp xúc do kiến ba khoang\n\n5 dấu hiệu cảnh báo viêm da tiếp xúc do kiến ba khoang\n\nGiá cao su hôm nay 10/11/2026: Nhật Bản giảm phiên thứ hai liên tiếp, thị trường trong nước đi ngang\n\nGiá cao su hôm nay 10/11/2026: Nhật Bản giảm phiên thứ hai liên tiếp, thị trường trong nước đi ngang [...] Gỗ Minh Long và hành trình đưa tư duy thiết kế vào vật liệu nội thất\n\nAmway Việt Nam hai năm liên tiếp nằm trong Top 100 nơi làm việc tốt nhất Đông Nam Á 2026\n\nAmway Việt Nam hai năm liên tiếp nằm trong Top 100 nơi làm việc tốt nhất Đông Nam Á 2026\n\nGiá lúa gạo hôm nay 10/11/2026: Thị trường trong nước đi ngang, gạo xuất khẩu Việt Nam giữ giá\n\nGiá lúa gạo hôm nay 10/11/2026: Thị trường trong nước đi ngang, gạo xuất khẩu Việt Nam giữ giá",
+                    "score": 0.55767727
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "round": 2,
+          "assistant_text": "Dưới đây là một số tin tức nổi bật hôm nay (10/11):\n\n1. **Bộ trưởng Pete Hegseth đối mặt sức ép luận tội**  \n   Hạ viện Mỹ chuẩn bị xem xét 8 cáo buộc luận tội Bộ trưởng Chiến tranh Pete Hegseth. Ngoài ra, Iran cảnh báo về nguy cơ Mỹ tiếp tục leo thang xung đột, và Nga tiến hành các cuộc tập kích vào hạ tầng năng lượng Ukraine. [Đọc thêm](https://vtcnews.vn/tin-nong-the-gioi-hom-nay-10-11-bo-truong-pete-hegseth-doi-mat-suc-ep-luan-toi-ar1050398.html) từ VTC News.\n\n2. **Đàm phán Mỹ - Nga - Ukraine tại UAE**  \n   Vòng đàm phán ba bên giữa Mỹ, Nga và Ukraine sẽ bắt đầu tại Các Tiểu vương quốc Ả Rập thống nhất (UAE) hôm nay, với hy vọng tạo bước đột phá trong nỗ lực chấm dứt xung đột. [Xem chi tiết](https://tamdamedia.eu/tin-tuc-the-gioi-10-11-kha-nang-luan-toi-bo-truong-chien-tranh-m) từ Tamda Media.\n\n3. **Vụ nổ tại nhà máy thép ở Thổ Nhĩ Kỳ**  \n   Một vụ nổ lớn xảy ra tại nhà máy thép ở Thổ Nhĩ Kỳ khiến 17 người thiệt mạng và 12 người bị thương. Tổng thống Erdogan cam kết điều tra nguyên nhân vụ việc. [Thông tin thêm](https://tin.skydoor.net/news/the-gioi-tin-tuc-the-gioi-1011-kha-nang-luan-toi-bo-truong-chien-8425119) từ Sky Tin.\n\n4. **Tai nạn giao thông tại TP.HCM**  \n   Một vụ tai nạn giao thông nghiêm trọng xảy ra khi xe máy lao lên vỉa hè, khiến một người đàn ông tử vong tại chỗ. [Chi tiết vụ việc](https://baoxaydung.vn/tin-tuc-tai-nan-giao-thong-moi-nhat-hom-nay-10-11-2026-19226111007124908.htm) từ Báo Xây Dựng.\n\n5. **Thời tiết và giá cả hôm nay**  \n   Lãi suất ngân hàng tiếp tục giảm, giá vàng và bạc có sự biến động. [Xem thêm](https://giadinhmoi.vn/tin-tuc-thoi-tiet-dem-nay-va-ngay-mai-11-11-2026-moi-nhat-d100689.html) từ Gia Đình Mới.\n\nNếu bạn cần thêm thông tin chi tiết về một tin tức cụ thể nào, hãy cho tôi biết!",
+          "tool_calls": [],
+          "tool_results": []
+        }
+      ],
+      "tool_events": [
+        {
+          "tool": "lookup",
+          "args": {
+            "query": "tin tức hôm nay",
+            "topic": "news",
+            "timeframe": "day"
+          },
+          "result": {
+            "tool": "web_search",
+            "query": "tin tức hôm nay",
+            "topic": "news",
+            "timeframe": "day",
+            "items": [
+              {
+                "title": "Tin nóng thế giới hôm nay 10/11: Bộ trưởng Pete Hegseth đối mặt sức ép luận tội",
+                "url": "https://vtcnews.vn/tin-nong-the-gioi-hom-nay-10-11-bo-truong-pete-hegseth-doi-mat-suc-ep-luan-toi-ar1050398.html",
+                "source": "vtcnews.vn",
+                "summary": "Trong bản tin thế giới mới nhất hôm nay 10/11, dư luận quốc tế đặc biệt quan tm đến việc Hạ viện Mỹ chuẩn bị xem xét 8 cáo buộc luận tội Bộ trưởng Chiến tranh Pete Hegseth.\n\nNgoài ra, cảnh báo cứng rắn của Iran trước nguy cơ Mỹ tiếp tục leo thang xung đột, các cuộc tập kích của Nga nhằm vào hạ tầng năng lượng và cơ sở công nghiệp quốc phòng Ukraine, cùng những chính sách mới của Cuba nhằm thúc đẩy khoa học, công nghệ và đổi mới sáng tạo cũng là nội dung đáng chú ý. [...] Tổng thống Mỹ Donald Trump cho biết FBI đang xem xét vụ việc liên quan đến CEO Jensen Huang, trong khi đó, Nvidia đối mặt với vụ kiện tập thể từ cổ đông.\n\n### Các nước chu u khởi động diễn tập triển khai lực lượng tại Ukraine\n\nLiên minh đa quốc gia khởi động diễn tập quy mô lớn đầu tiên tại Ba Lan vào ngày 9/11, chuẩn bị cho triển khai lực lượng tới Ukraine sau chiến sự.\n\n### Ông Trump tuyên bố cuộc chiến với Iran 'cơ bản đã kết thúc' [...] Ngày 9/11, Bộ Quốc phòng Nga tuyên bố qun đội nước này tiến hành các cuộc tập kích tầm xa nhằm vào hạ tầng năng lượng và cơ sở sản xuất máy bay không người lái (UAV) của Ukraine tại nhiều khu vực. Theo tuyên bố của Moskva, các trạm biến áp cung cấp điện cho lực lượng qun sự và tổ hợp công nghiệp quốc phòng Ukraine bị tấn công tại 4 tỉnh, gồm Kiev, Dnipropetrovsk, Cherkasy và Vinnitsa.",
+                "score": 0.63098115
+              },
+              {
+                "title": "Tin tức thế giới 10-11: Khả năng luận tội Bộ trưởng Chiến tranh Mỹ; Ông Trump cáo buộc gian lận bầu cử - TamdaMedia",
+                "url": "https://tamdamedia.eu/tin-tuc-the-gioi-10-11-kha-nang-luan-toi-bo-truong-chien-tranh-m",
+                "source": "tamdamedia.eu",
+                "summary": "Ông Trump bắt đầu có những phát ngôn mới về kết quả bầu cử giữa kỳ - Ảnh: REUTERS\n\n## Hôm nay đàm phán Mỹ - Nga - Ukraine tại UAE\n\nHôm nay, 10-11, vòng đàm phán ba bên giữa Mỹ, Nga và Ukraine sẽ bắt đầu tại Các Tiểu vương quốc Ả Rập thống nhất (UAE), dự kiến kéo dài đến ngày 11-11.\n\nTổng thống Trump ngày 9-11 nhận định các cuộc đàm phán do Washington làm trung gian tại thủ đô Abu Dhabi (UAE) trong tuần này có thể tạo bước đột phá trong nỗ lực chấm dứt xung đột Nga - Ukraine. [...] Tết giữa trời u\n\nHomepageTRANG CHỦHot NewsNóngVideoVideoFacebookFacebookYoutubeYoutube\n\nHomepageTrang chủ\nHot NewsTin nóng\nVideoVideo\nFacebookFacebook\nYoutubeYoutube\n\n# Tin tức thế giới 10-11: Khả năng luận tội Bộ trưởng Chiến tranh Mỹ; Ông Trump cáo buộc gian lận bầu cử\n\nTamda Media,\n\nNghị sĩ Mỹ khởi động thủ tục luận tội Bộ trưởng Chiến tranh; Ông Trump cáo buộc bầu cử giữa kỳ gian lận; Hôm nay đàm phán Mỹ - Nga - Ukraine tại UAE… là một số tin tức thế giới đáng chú ý sáng 10-11. [...] Hai vụ việc hiện đang được điều tra.\n\n## Nổ \"như tận thế\" tại nhà máy thép Thổ Nhĩ Kỳ\n\nMột vụ nổ lớn xảy ra tại nhà máy thép ở miền ty Thổ Nhĩ Kỳ hôm 9-11 khiến 17 người thiệt mạng và 12 người bị thương.\n\nTổng thống Thổ Nhĩ Kỳ Recep Tayyip Erdogan cam kết làm rõ nguyên nhn và xác định trách nhiệm của những người liên quan.\n\nTheo giới chức địa phương, vụ nổ xảy ra vào khoảng giữa trưa (giờ địa phương) tại nhà máy thép HABAS, cách thành phố cảng Izmir khoảng 60 km về phía bắc.",
+                "score": 0.59796065
+              },
+              {
+                "title": "Tin tức thế giới 10-11: Khả năng luận tội Bộ trưởng Chiến tranh Mỹ; Ông Trump cáo buộc gian lận bầu cử | Sky Tin",
+                "url": "https://tin.skydoor.net/news/the-gioi-tin-tuc-the-gioi-1011-kha-nang-luan-toi-bo-truong-chien-8425119",
+                "source": "tin.skydoor.net",
+                "summary": "Bỏ qua điều hướng\n\nSkydoor\n\nSky Tin - Tin tức địa phương toàn cầu 24h mới nhất!\n\nXem tin theo cách của bạn >>\n\n\n\n# Tin tức thế giới 10-11: Khả năng luận tội Bộ trưởng Chiến tranh Mỹ; Ông Trump cáo buộc gian lận bầu cử\n\nÔng Trump tuyên bố có thể nối lại tấn công Iran bất cứ lúc nào; Hôm nay đàm phán Mỹ - Nga - Ukraine tại UAE.\n\nĐọc tin gốc tại tuoitre.vn →\n\n## Tin tức Mỹ mới nhất hôm nay\n\n[](\n\n### Vụ CEO Nvidia ngoại tình: Ông Trump tin ông Jensen Huang; FBI vào cuộc điều tra [...] Xem tóm tắt nhanh\n\n## Tin tức Thế Giới mới nhất hôm nay\n\n[](\n\n### Nghị sĩ đảng Cộng hòa đề xuất luận tội Bộ trưởng Chiến tranh Mỹ Pete Hegseth về cuộc chiến Iran\n\n1 giờ trước–anninhthudo.vnanninhthudo.vn\n\nXem tóm tắt nhanh\n\n[](\n\n### Bộ trưởng Quốc phòng Mỹ đứng trước nguy cơ bị Hạ viện luận tội\n\n1 giờ trước–hanoimoi.vnhanoimoi.vn\n\nXem tóm tắt nhanh\n\n[](\n\n### Chuyên gia chỉ ra nút thắt khiến lực lượng Cổng Sắt của Mỹ khó chặn dòng vũ khí vào Iran\n\n1 giờ trước–baotintuc.vnbaotintuc.vn",
+                "score": 0.5957048
+              },
+              {
+                "title": "Tin tức tai nạn giao thông mới nhất hôm nay 10/11/2026",
+                "url": "https://baoxaydung.vn/tin-tuc-tai-nan-giao-thong-moi-nhat-hom-nay-10-11-2026-19226111007124908.htm",
+                "source": "baoxaydung.vn",
+                "summary": "Chiều 9/11, Công an TP.HCM khám nghiệm hiện trường, điều tra nguyên nhn vụ tai nạn khi xe máy lao lên vỉa hè, tông vào cột biển báo khiến người đàn ông tử vong tại chỗ.\n\nTheo thông tin ban đầu, hơn 12h cùng ngày, ông Trịnh Mỹ Phước (58 tuổi, quê tỉnh Trà Vinh cũ) điều khiển xe máy lưu thông trên đường số 16 (phường Linh Xun), theo hướng từ đường số 17 đi đường Lê Văn Chí. Khi vừa qua khỏi Trường THPT Linh Trung, xe máy bất ngờ lao lên vỉa hè bên phải, tông vào cột biển thông báo. [...] Theo đó, khoảng 8h30 cùng ngày, một máy cày kéo theo rơ-moóc chở máy xúc Kobe lưu thông qua cầu Tn Thành. Khi đoàn phương tiện di chuyển đến giữa cầu, nhịp cầu bất ngờ gãy và đổ xuống kênh. Sự cố xảy ra đột ngột khiến máy cày, rơ-moóc và máy xúc rơi xuống dòng kênh bên dưới. May mắn, vụ việc không gy thiệt hại về người. [...] Theo đó, vào khoảng 14h cùng ngày, một chiếc ô tô con quay đầu trên QL7, đoạn qua địa bàn xã Bảo Thành cũ, nay là xã Hợp Minh. Khi xe vừa ra giữa đường, một chiếc xe máy tay ga chở theo 3 người lao với tốc độ nhanh đã đm thẳng vào hông xe ô tô. Cú va chạm cực mạnh khiến chiếc xe máy văng lên và nằm gọn gàng trên nóc ô tô. Phần kính sau xe ô tô bị vỡ nát, hông xe bị hư hỏng nặng.",
+                "score": 0.5863576
+              },
+              {
+                "title": "Tin tức thời tiết đêm nay và ngày mai 11/11/2026 mới nhất",
+                "url": "https://giadinhmoi.vn/tin-tuc-thoi-tiet-dem-nay-va-ngay-mai-11-11-2026-moi-nhat-d100689.html",
+                "source": "giadinhmoi.vn",
+                "summary": "Lãi suất ngn hàng hôm nay 10/11/2026: Nhiều nhà băng tiếp tục giảm, mức cao nhất lên 7,4%/năm\n\nLãi suất ngn hàng hôm nay 10/11/2026: Nhiều nhà băng tiếp tục giảm, mức cao nhất lên 7,4%/năm\n\nGiá bạc hôm nay 10/11/2026: Bạc thế giới tăng lên 53,54 USD/ounce, Phú Quý bán ra 1,629 triệu đồng/lượng\n\nGiá bạc hôm nay 10/11/2026: Bạc thế giới tăng lên 53,54 USD/ounce, Phú Quý bán ra 1,629 triệu đồng/lượng\n\nGiá vàng hôm nay 10/11/2026: Vàng thế giới vượt 4.100 USD/ounce, SJC lên 141,2 triệu đồng/lượng [...] Giá vàng hôm nay 10/11/2026: Vàng thế giới vượt 4.100 USD/ounce, SJC lên 141,2 triệu đồng/lượng\n\n5 dấu hiệu cảnh báo viêm da tiếp xúc do kiến ba khoang\n\n5 dấu hiệu cảnh báo viêm da tiếp xúc do kiến ba khoang\n\nGiá cao su hôm nay 10/11/2026: Nhật Bản giảm phiên thứ hai liên tiếp, thị trường trong nước đi ngang\n\nGiá cao su hôm nay 10/11/2026: Nhật Bản giảm phiên thứ hai liên tiếp, thị trường trong nước đi ngang [...] Gỗ Minh Long và hành trình đưa tư duy thiết kế vào vật liệu nội thất\n\nAmway Việt Nam hai năm liên tiếp nằm trong Top 100 nơi làm việc tốt nhất Đông Nam Á 2026\n\nAmway Việt Nam hai năm liên tiếp nằm trong Top 100 nơi làm việc tốt nhất Đông Nam Á 2026\n\nGiá lúa gạo hôm nay 10/11/2026: Thị trường trong nước đi ngang, gạo xuất khẩu Việt Nam giữ giá\n\nGiá lúa gạo hôm nay 10/11/2026: Thị trường trong nước đi ngang, gạo xuất khẩu Việt Nam giữ giá",
+                "score": 0.55767727
+              }
+            ]
+          }
+        }
+      ],
+      "ended_at": "2026-11-10T20:58:06"
+    },
+    {
+      "turn_index": 3,
+      "started_at": "2026-11-10T20:59:15",
+      "user": "Tìm twiter của sama",
+      "status": "waiting_for_user",
+      "assistant_text": "Bạn có thể cung cấp tên tài khoản Twitter cụ thể của Sama không?",
+      "rounds": [
+        {
+          "round": 1,
+          "assistant_text": null,
+          "tool_calls": [
+            {
+              "name": "clarify",
+              "args": {
+                "question": "Bạn có thể cung cấp tên tài khoản Twitter cụ thể của Sama không?",
+                "response_type": "text"
+              }
+            }
+          ],
+          "tool_results": [
+            {
+              "tool": "clarify",
+              "args": {
+                "question": "Bạn có thể cung cấp tên tài khoản Twitter cụ thể của Sama không?",
+                "response_type": "text"
+              },
+              "result": {
+                "tool": "ask_user",
+                "question": "Bạn có thể cung cấp tên tài khoản Twitter cụ thể của Sama không?",
+                "response_type": "text",
+                "options": [],
+                "awaiting_user": true
+              }
+            }
+          ]
+        }
+      ],
+      "tool_events": [
+        {
+          "tool": "clarify",
+          "args": {
+            "question": "Bạn có thể cung cấp tên tài khoản Twitter cụ thể của Sama không?",
+            "response_type": "text"
+          },
+          "result": {
+            "tool": "ask_user",
+            "question": "Bạn có thể cung cấp tên tài khoản Twitter cụ thể của Sama không?",
+            "response_type": "text",
+            "options": [],
+            "awaiting_user": true
+          }
+        }
+      ],
+      "ended_at": "2026-11-10T20:59:17"
+    },
+    {
+      "turn_index": 4,
+      "started_at": "2026-11-10T21:00:04",
+      "user": "Còn tin robotics thì sao, vẫn trong hôm nay nhé",
+      "status": "answered",
+      "assistant_text": "Dưới đây là một số tin tức về robotics trong hôm nay (10/11):\n\n1. **Mô hình mới giúp robot học nhiệm vụ nhanh hơn với ít lập trình từ con người**  \n   Một nghiên cứu từ UC Berkeley đã phát triển phương pháp \"robotics agentic\", cho phép các nhóm AI tạo ra chương trình điều khiển robot, thử nghiệm trong môi trường mô phỏng và cải thiện hiệu suất trước khi triển khai trên máy thực. Phương pháp này có thể giảm thiểu nhu cầu về dữ liệu huấn luyện lớn và kỹ thuật lập trình phức tạp. [Đọc thêm](https://interestingengineering.com/ai-robotics/new-model-to-transform-robots-programming) từ Interesting Engineering.\n\n2. **AI² Robotics tham gia vào các ngành công nghiệp chiến lược quốc gia của Indonesia**  \n   AI² Robotics đã ký một biên bản ghi nhớ với Quỹ Phát triển Danantara của Indonesia để tập trung vào các ứng dụng thí điểm và hợp tác công nghiệp trong việc triển khai robot thông minh. [Chi tiết](https://autonews.gasgoo.com/articles/news/ai-robotics-joins-indonesias-national-strategic-industries-2120056200636563457) từ Gasgoo.\n\n3. **Startup Memories.ai ra mắt nền tảng cho công nhân tự do tạo video POV để huấn luyện robot**  \n   Memories.ai đang phát triển một nền tảng cho phép công nhân tự do ghi lại các nhiệm vụ hàng ngày để huấn luyện robot, nhằm cung cấp dữ liệu huấn luyện đa dạng cho các mô hình AI. [Xem thêm](https://fortune.com/2026/11/10/exclusive-in-the-race-for-robot-training-data-ex-meta-researchers-startup-turns-to-gig-workers-with-cameras) từ Fortune.\n\n4. **Robot có thể biến đổi phẫu thuật vú mãi mãi**  \n   Phẫu thuật robot có thể giảm thiểu chấn thương cho bệnh nhân trong các ca phẫu thuật cắt bỏ vú, nhờ vào việc sử dụng khí carbon dioxide để mở không gian phẫu thuật. [Thông tin chi tiết](https://www.vox.com/future-perfect/509441/robotic-breast-cancer-surgery) từ Vox.\n\n5. **DataLogix AI ra mắt tài nguyên video tại nơi làm việc cho doanh nghiệp khám phá đào tạo AI và robotics**  \n   DataLogix AI đã phát hành các tài nguyên video để giúp các doanh nghiệp khám phá việc sử dụng video tại nơi làm việc cho đào tạo AI và robotics. [Đọc thêm](https://aithority.com/machine-learning/datalogix-ai-launches-workplace-video-resources-for-businesses-exploring-ai-and-robotics-training) từ AiThority.\n\nNếu bạn cần thêm thông tin chi tiết về một tin tức cụ thể nào, hãy cho tôi biết!",
+      "rounds": [
+        {
+          "round": 1,
+          "assistant_text": null,
+          "tool_calls": [
+            {
+              "name": "lookup",
+              "args": {
+                "query": "robotics",
+                "topic": "news",
+                "timeframe": "day",
+                "max_results": 5
+              }
+            },
+            {
+              "name": "social_search",
+              "args": {
+                "query": "robotics",
+                "search_type": "Latest",
+                "limit": 5
+              }
+            }
+          ],
+          "tool_results": [
+            {
+              "tool": "lookup",
+              "args": {
+                "query": "robotics",
+                "topic": "news",
+                "timeframe": "day",
+                "max_results": 5
+              },
+              "result": {
+                "tool": "web_search",
+                "query": "robotics",
+                "topic": "news",
+                "timeframe": "day",
+                "items": [
+                  {
+                    "title": "New model helps robots learn tasks faster with less human programming",
+                    "url": "https://interestingengineering.com/ai-robotics/new-model-to-transform-robots-programming",
+                    "source": "interestingengineering.com",
+                    "summary": "Called agentic robotics, the approach allows teams of AI agents to generate robot-control programs, test them in simulated environments, identify failures, and revise their code before deploying it on physical machines.\n\nThe technology could address two longstanding challenges in robotics: the extensive engineering required to program robot behaviors and the large volumes of real-world data needed to train robots through imitation learning. [...] Agentic robotics seeks to combine the advantages of these methods while reducing their limitations. The approach uses a framework called Graph-as-Policy, which divides complex robotic tasks into smaller, reusable skills. These include identifying objects, planning grasps, and moving robotic grippers without colliding with surrounding objects. [...] UC Berkeley researchers have developed an AI-driven approach that could significantly accelerate how robots are programmed and trained for real-world tasks. Called agentic robotics, the approach uses teams of AI agents to generate robot-control programs, test them in simulated environments, and refine their performance.\n\nThe method could reduce the need for extensive training data and manual engineering, two major challenges that have slowed the development of capable robots.",
+                    "score": 0.57780564
+                  },
+                  {
+                    "title": "AI² Robotics Joins Indonesia’s National Strategic Industries | Gasgoo",
+                    "url": "https://autonews.gasgoo.com/articles/news/ai-robotics-joins-indonesias-national-strategic-industries-2120056200636563457",
+                    "source": "autonews.gasgoo.com",
+                    "summary": "Underpinning this deployment is AI² Robotics's integrated \"Model × Hardware × Scenario\" capability. The approach centers on a brain-like embodied large model as the intelligence core, mass-producible and stable robotic bodies as the vehicle, and real-world productivity scenarios as the driving force. [...] Gasgoo Munich-On November 9, AI² Robotics announced it has signed a memorandum of understanding with the Danantara Development Management Fund (DDMF), the investment arm of Indonesia's state-backed wealth fund Danantara Indonesia. The partnership will focus on pilot applications, industrial collaboration, and local deployment of general-purpose intelligent robots and embodied AI technology across the archipelago. [...] The agreement was signed during the inaugural Danantara Technology Innovation Investment Forum (DTIIF 2026) in Jakarta, with Zhang Peng, AI² Robotics's co-founder, signing on behalf of the company.\n\nImage Credit: AI² Robotics\n\nOperating independently under the president's office, Danantara Indonesia holds substantial influence. AI² Robotics is now the first—and currently the only—robotics company to join DDMF's embodied AI cooperation roster.",
+                    "score": 0.47300056
+                  },
+                  {
+                    "title": "Exclusive: Startup Memories.ai launches platform for gig workers to make POV videos to train robots | Fortune",
+                    "url": "https://fortune.com/2026/11/10/exclusive-in-the-race-for-robot-training-data-ex-meta-researchers-startup-turns-to-gig-workers-with-cameras",
+                    "source": "fortune.com",
+                    "summary": "Humanoid robotics startup Figure and Physical Intelligence, a startup that builds AI software “brains” that can control a variety of different types of robots and embodied AI devices, are both exploring how robots can learn from POV video footage. Figure’s Index platform pays people to record everyday tasks for its Helix AI models. Physical Intelligence has tested combining human video with teleoperation data, which is recorded as people control robots remotely, demonstrating how to complete [...] # 2\n\nCurrent price of oil as of November 9, 2026\n\n# 3\n\nCurrent price of silver as of Monday, November 9, 2026\n\nInnovationRobotics\n\n# Exclusive: In the race for robot training data, ex-Meta researchers’ startup turns to gig workers with cameras\n\nBy \n\nWen Shao\n\nWen Shao\n\nAI Fellow\n\nBy \n\nWen Shao\n\nWen Shao\n\nAI Fellow\n\nNovember 10, 2026, 8:00 AM ET\n\nMemories.ai co-founders Shawn Shen (left) and Ben Zhou (right) [...] The company says its customers include three of the top five frontier AI labs, alongside robotics developers buying its first-person training data, although the company declined to name these customers citing non-disclosure agreements. Co-founder and CEO Shawn Shen told Fortune that customers increasingly want footage covering a wider range of work environments, tasks and camera angles. Two people making coffee in different kitchens can supply useful variation, he said, even when they are",
+                    "score": 0.2888102
+                  },
+                  {
+                    "title": "Robots could transform breast surgery forever | Vox",
+                    "url": "https://www.vox.com/future-perfect/509441/robotic-breast-cancer-surgery",
+                    "source": "vox.com",
+                    "summary": "In a traditional mastectomy, the surgical cut is held physically open with instruments called retractors, which can cause considerable physical trauma and pressure in the area around it. By contrast, in robotic surgery, carbon dioxide gas is used to open up the space in a much gentler manner. Farr believes that reduced trauma to the skin and better visualization of structures (and hence increased ability to avoid critical nerves) in robot-assisted surgery could be the reason that some patients [...] In a robotic mastectomy, the surgeon sits at a console a few feet away from the patient and controls every movement of the machine’s instruments with their hands. The da Vinci single-port robot, the version cleared for nipple-sparing mastectomies, has one arm that enters the body through a single small incision usually along the side of the chest or, in some cases, in the fold beneath the breast. The arm has three multi-jointed instruments at one end, which the surgeon can use to bend, grasp, [...] Some surgeons are embracing this new technology because it offers a smaller, hidden scar and a clearer view inside the breast. Some patients also report better sensation in the chest area afterward.\n But critics say that there isn’t conclusive long-term evidence yet that robotic nipple-sparing mastectomies are as good as open mastectomies at making sure the cancer doesn’t come back, even if they are technically safe to perform.",
+                    "score": 0.28299356
+                  },
+                  {
+                    "title": "DataLogix AI Launches Workplace Video Resources for Businesses Exploring AI and Robotics Training",
+                    "url": "https://aithority.com/machine-learning/datalogix-ai-launches-workplace-video-resources-for-businesses-exploring-ai-and-robotics-training",
+                    "source": "aithority.com",
+                    "summary": "The workplace-video resources describe possible tasks in areas including warehousing, maintenance, construction, production and vehicle service. These examples are discussion starting points, not confirmed eligible categories. The guidance asks owners to review participant consent, recording permissions, safety, equipment and footage acceptance criteria before beginning. [...] DataLogix AI, a division of Trailblaze Solutions LLC, has launched online resources to help business owners explore first-person workplace video for AI and robotics training. The new resources include a workplace-video overview, an adjustable revenue calculator, a business owner guide and an inquiry form for discussing potential fit. [...] Businesses interested in learning more can use the inquiry form to describe their company and the opportunity they would like to discuss. An inquiry is not enrollment, recording permission or a payment offer. Program availability, equipment and commercial terms require separate confirmation, and payment may be zero.\n\nAlso Read: Architecture, Not Intelligence, Will Define the Future of AI Headphones",
+                    "score": 0.25123456
+                  }
+                ]
+              }
+            },
+            {
+              "tool": "social_search",
+              "args": {
+                "query": "robotics",
+                "search_type": "Latest",
+                "limit": 5
+              },
+              "result": {
+                "tool": "search_tweets",
+                "error": "HTTPError",
+                "message": "403 Client Error: Forbidden for url: https://twitter-api45.p.rapidapi.com/search.php?query=robotics&search_type=Latest"
+              }
+            }
+          ]
+        },
+        {
+          "round": 2,
+          "assistant_text": "Dưới đây là một số tin tức về robotics trong hôm nay (10/11):\n\n1. **Mô hình mới giúp robot học nhiệm vụ nhanh hơn với ít lập trình từ con người**  \n   Một nghiên cứu từ UC Berkeley đã phát triển phương pháp \"robotics agentic\", cho phép các nhóm AI tạo ra chương trình điều khiển robot, thử nghiệm trong môi trường mô phỏng và cải thiện hiệu suất trước khi triển khai trên máy thực. Phương pháp này có thể giảm thiểu nhu cầu về dữ liệu huấn luyện lớn và kỹ thuật lập trình phức tạp. [Đọc thêm](https://interestingengineering.com/ai-robotics/new-model-to-transform-robots-programming) từ Interesting Engineering.\n\n2. **AI² Robotics tham gia vào các ngành công nghiệp chiến lược quốc gia của Indonesia**  \n   AI² Robotics đã ký một biên bản ghi nhớ với Quỹ Phát triển Danantara của Indonesia để tập trung vào các ứng dụng thí điểm và hợp tác công nghiệp trong việc triển khai robot thông minh. [Chi tiết](https://autonews.gasgoo.com/articles/news/ai-robotics-joins-indonesias-national-strategic-industries-2120056200636563457) từ Gasgoo.\n\n3. **Startup Memories.ai ra mắt nền tảng cho công nhân tự do tạo video POV để huấn luyện robot**  \n   Memories.ai đang phát triển một nền tảng cho phép công nhân tự do ghi lại các nhiệm vụ hàng ngày để huấn luyện robot, nhằm cung cấp dữ liệu huấn luyện đa dạng cho các mô hình AI. [Xem thêm](https://fortune.com/2026/11/10/exclusive-in-the-race-for-robot-training-data-ex-meta-researchers-startup-turns-to-gig-workers-with-cameras) từ Fortune.\n\n4. **Robot có thể biến đổi phẫu thuật vú mãi mãi**  \n   Phẫu thuật robot có thể giảm thiểu chấn thương cho bệnh nhân trong các ca phẫu thuật cắt bỏ vú, nhờ vào việc sử dụng khí carbon dioxide để mở không gian phẫu thuật. [Thông tin chi tiết](https://www.vox.com/future-perfect/509441/robotic-breast-cancer-surgery) từ Vox.\n\n5. **DataLogix AI ra mắt tài nguyên video tại nơi làm việc cho doanh nghiệp khám phá đào tạo AI và robotics**  \n   DataLogix AI đã phát hành các tài nguyên video để giúp các doanh nghiệp khám phá việc sử dụng video tại nơi làm việc cho đào tạo AI và robotics. [Đọc thêm](https://aithority.com/machine-learning/datalogix-ai-launches-workplace-video-resources-for-businesses-exploring-ai-and-robotics-training) từ AiThority.\n\nNếu bạn cần thêm thông tin chi tiết về một tin tức cụ thể nào, hãy cho tôi biết!",
+          "tool_calls": [],
+          "tool_results": []
+        }
+      ],
+      "tool_events": [
+        {
+          "tool": "lookup",
+          "args": {
+            "query": "robotics",
+            "topic": "news",
+            "timeframe": "day",
+            "max_results": 5
+          },
+          "result": {
+            "tool": "web_search",
+            "query": "robotics",
+            "topic": "news",
+            "timeframe": "day",
+            "items": [
+              {
+                "title": "New model helps robots learn tasks faster with less human programming",
+                "url": "https://interestingengineering.com/ai-robotics/new-model-to-transform-robots-programming",
+                "source": "interestingengineering.com",
+                "summary": "Called agentic robotics, the approach allows teams of AI agents to generate robot-control programs, test them in simulated environments, identify failures, and revise their code before deploying it on physical machines.\n\nThe technology could address two longstanding challenges in robotics: the extensive engineering required to program robot behaviors and the large volumes of real-world data needed to train robots through imitation learning. [...] Agentic robotics seeks to combine the advantages of these methods while reducing their limitations. The approach uses a framework called Graph-as-Policy, which divides complex robotic tasks into smaller, reusable skills. These include identifying objects, planning grasps, and moving robotic grippers without colliding with surrounding objects. [...] UC Berkeley researchers have developed an AI-driven approach that could significantly accelerate how robots are programmed and trained for real-world tasks. Called agentic robotics, the approach uses teams of AI agents to generate robot-control programs, test them in simulated environments, and refine their performance.\n\nThe method could reduce the need for extensive training data and manual engineering, two major challenges that have slowed the development of capable robots.",
+                "score": 0.57780564
+              },
+              {
+                "title": "AI² Robotics Joins Indonesia’s National Strategic Industries | Gasgoo",
+                "url": "https://autonews.gasgoo.com/articles/news/ai-robotics-joins-indonesias-national-strategic-industries-2120056200636563457",
+                "source": "autonews.gasgoo.com",
+                "summary": "Underpinning this deployment is AI² Robotics's integrated \"Model × Hardware × Scenario\" capability. The approach centers on a brain-like embodied large model as the intelligence core, mass-producible and stable robotic bodies as the vehicle, and real-world productivity scenarios as the driving force. [...] Gasgoo Munich-On November 9, AI² Robotics announced it has signed a memorandum of understanding with the Danantara Development Management Fund (DDMF), the investment arm of Indonesia's state-backed wealth fund Danantara Indonesia. The partnership will focus on pilot applications, industrial collaboration, and local deployment of general-purpose intelligent robots and embodied AI technology across the archipelago. [...] The agreement was signed during the inaugural Danantara Technology Innovation Investment Forum (DTIIF 2026) in Jakarta, with Zhang Peng, AI² Robotics's co-founder, signing on behalf of the company.\n\nImage Credit: AI² Robotics\n\nOperating independently under the president's office, Danantara Indonesia holds substantial influence. AI² Robotics is now the first—and currently the only—robotics company to join DDMF's embodied AI cooperation roster.",
+                "score": 0.47300056
+              },
+              {
+                "title": "Exclusive: Startup Memories.ai launches platform for gig workers to make POV videos to train robots | Fortune",
+                "url": "https://fortune.com/2026/11/10/exclusive-in-the-race-for-robot-training-data-ex-meta-researchers-startup-turns-to-gig-workers-with-cameras",
+                "source": "fortune.com",
+                "summary": "Humanoid robotics startup Figure and Physical Intelligence, a startup that builds AI software “brains” that can control a variety of different types of robots and embodied AI devices, are both exploring how robots can learn from POV video footage. Figure’s Index platform pays people to record everyday tasks for its Helix AI models. Physical Intelligence has tested combining human video with teleoperation data, which is recorded as people control robots remotely, demonstrating how to complete [...] # 2\n\nCurrent price of oil as of November 9, 2026\n\n# 3\n\nCurrent price of silver as of Monday, November 9, 2026\n\nInnovationRobotics\n\n# Exclusive: In the race for robot training data, ex-Meta researchers’ startup turns to gig workers with cameras\n\nBy \n\nWen Shao\n\nWen Shao\n\nAI Fellow\n\nBy \n\nWen Shao\n\nWen Shao\n\nAI Fellow\n\nNovember 10, 2026, 8:00 AM ET\n\nMemories.ai co-founders Shawn Shen (left) and Ben Zhou (right) [...] The company says its customers include three of the top five frontier AI labs, alongside robotics developers buying its first-person training data, although the company declined to name these customers citing non-disclosure agreements. Co-founder and CEO Shawn Shen told Fortune that customers increasingly want footage covering a wider range of work environments, tasks and camera angles. Two people making coffee in different kitchens can supply useful variation, he said, even when they are",
+                "score": 0.2888102
+              },
+              {
+                "title": "Robots could transform breast surgery forever | Vox",
+                "url": "https://www.vox.com/future-perfect/509441/robotic-breast-cancer-surgery",
+                "source": "vox.com",
+                "summary": "In a traditional mastectomy, the surgical cut is held physically open with instruments called retractors, which can cause considerable physical trauma and pressure in the area around it. By contrast, in robotic surgery, carbon dioxide gas is used to open up the space in a much gentler manner. Farr believes that reduced trauma to the skin and better visualization of structures (and hence increased ability to avoid critical nerves) in robot-assisted surgery could be the reason that some patients [...] In a robotic mastectomy, the surgeon sits at a console a few feet away from the patient and controls every movement of the machine’s instruments with their hands. The da Vinci single-port robot, the version cleared for nipple-sparing mastectomies, has one arm that enters the body through a single small incision usually along the side of the chest or, in some cases, in the fold beneath the breast. The arm has three multi-jointed instruments at one end, which the surgeon can use to bend, grasp, [...] Some surgeons are embracing this new technology because it offers a smaller, hidden scar and a clearer view inside the breast. Some patients also report better sensation in the chest area afterward.\n But critics say that there isn’t conclusive long-term evidence yet that robotic nipple-sparing mastectomies are as good as open mastectomies at making sure the cancer doesn’t come back, even if they are technically safe to perform.",
+                "score": 0.28299356
+              },
+              {
+                "title": "DataLogix AI Launches Workplace Video Resources for Businesses Exploring AI and Robotics Training",
+                "url": "https://aithority.com/machine-learning/datalogix-ai-launches-workplace-video-resources-for-businesses-exploring-ai-and-robotics-training",
+                "source": "aithority.com",
+                "summary": "The workplace-video resources describe possible tasks in areas including warehousing, maintenance, construction, production and vehicle service. These examples are discussion starting points, not confirmed eligible categories. The guidance asks owners to review participant consent, recording permissions, safety, equipment and footage acceptance criteria before beginning. [...] DataLogix AI, a division of Trailblaze Solutions LLC, has launched online resources to help business owners explore first-person workplace video for AI and robotics training. The new resources include a workplace-video overview, an adjustable revenue calculator, a business owner guide and an inquiry form for discussing potential fit. [...] Businesses interested in learning more can use the inquiry form to describe their company and the opportunity they would like to discuss. An inquiry is not enrollment, recording permission or a payment offer. Program availability, equipment and commercial terms require separate confirmation, and payment may be zero.\n\nAlso Read: Architecture, Not Intelligence, Will Define the Future of AI Headphones",
+                "score": 0.25123456
+              }
+            ]
+          }
+        },
+        {
+          "tool": "social_search",
+          "args": {
+            "query": "robotics",
+            "search_type": "Latest",
+            "limit": 5
+          },
+          "result": {
+            "tool": "search_tweets",
+            "error": "HTTPError",
+            "message": "403 Client Error: Forbidden for url: https://twitter-api45.p.rapidapi.com/search.php?query=robotics&search_type=Latest"
+          }
+        }
+      ],
+      "ended_at": "2026-11-10T21:00:17"
+    },
+    {
+      "turn_index": 5,
+      "started_at": "2026-11-10T21:00:36",
+      "user": "“Tóm tắt 5 tweet mới nhất giúp mình",
+      "status": "answered",
+      "assistant_text": "Bạn có thể cung cấp tên tài khoản Twitter mà bạn muốn tóm tắt 5 tweet mới nhất không?",
+      "rounds": [
+        {
+          "round": 1,
+          "assistant_text": "Bạn có thể cung cấp tên tài khoản Twitter mà bạn muốn tóm tắt 5 tweet mới nhất không?",
+          "tool_calls": [],
+          "tool_results": []
+        }
+      ],
+      "tool_events": [],
+      "ended_at": "2026-11-10T21:00:37"
+    },
+    {
+      "turn_index": 6,
+      "started_at": "2026-11-10T21:02:08",
+      "user": "Donal Trump ",
+      "status": "answered",
+      "assistant_text": "Tôi không thể truy cập vào các tweet mới nhất từ tài khoản của Donald Trump do lỗi quyền truy cập. Bạn có muốn tìm kiếm thông tin khác hoặc một tài khoản khác không?",
+      "rounds": [
+        {
+          "round": 1,
+          "assistant_text": null,
+          "tool_calls": [
+            {
+              "name": "timeline",
+              "args": {
+                "screenname": "realDonaldTrump",
+                "limit": 5
+              }
+            }
+          ],
+          "tool_results": [
+            {
+              "tool": "timeline",
+              "args": {
+                "screenname": "realDonaldTrump",
+                "limit": 5
+              },
+              "result": {
+                "tool": "get_user_tweets",
+                "error": "HTTPError",
+                "message": "403 Client Error: Forbidden for url: https://twitter-api45.p.rapidapi.com/timeline.php?screenname=realDonaldTrump"
+              }
+            }
+          ]
+        },
+        {
+          "round": 2,
+          "assistant_text": "Tôi không thể truy cập vào các tweet mới nhất từ tài khoản của Donald Trump do lỗi quyền truy cập. Bạn có muốn tìm kiếm thông tin khác hoặc một tài khoản khác không?",
+          "tool_calls": [],
+          "tool_results": []
+        }
+      ],
+      "tool_events": [
+        {
+          "tool": "timeline",
+          "args": {
+            "screenname": "realDonaldTrump",
+            "limit": 5
+          },
+          "result": {
+            "tool": "get_user_tweets",
+            "error": "HTTPError",
+            "message": "403 Client Error: Forbidden for url: https://twitter-api45.p.rapidapi.com/timeline.php?screenname=realDonaldTrump"
+          }
+        }
+      ],
+      "ended_at": "2026-11-10T21:02:18"
+    }
+  ]
+}
