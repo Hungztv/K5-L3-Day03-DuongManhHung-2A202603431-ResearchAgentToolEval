@@ -18,6 +18,9 @@ ROOT = Path(__file__).parent
 ARTIFACTS_DIR = ROOT / "artifacts"
 VERSIONS_DIR = ARTIFACTS_DIR / "versions"
 TRANSCRIPTS_DIR = ROOT / "transcripts"
+AVAILABLE_VERSIONS = sorted(
+    path.name for path in VERSIONS_DIR.iterdir() if path.is_dir()
+)
 load_lab_env(ROOT)
 
 
@@ -85,7 +88,7 @@ with st.sidebar:
     st.header("Cấu hình")
     provider_name = st.selectbox("Provider", ["groq", "gemini", "openrouter", "openai", "anthropic", "ollama"])
     model = st.text_input("Model (để trống dùng mặc định)", value="")
-    version = st.selectbox("Artifact version", ["v0", "v1", "v2"])
+    version = st.selectbox("Artifact version", AVAILABLE_VERSIONS)
     if st.button("Bắt đầu phiên mới"):
         start_session(provider_name, model, version)
         st.rerun()
