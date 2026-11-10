@@ -1,0 +1,922 @@
+{
+  "run_id": "v3_B_group_groq_20261110T152501502468",
+  "version": "v3",
+  "artifact_version": "v3+p7873a39dae10+te2a73c69245b",
+  "prompt_hash": "7873a39dae10f734138677572285dcd6f5f2c2cb7406f5daa3f7fad0e2b335d8",
+  "tools_hash": "e2a73c69245b3d2e3ee5ff88c42da40a653b7669ea4118116bf451fc4551895c",
+  "phase": "B",
+  "suite": "group",
+  "provider": "groq",
+  "model": "openai/gpt-oss-20b",
+  "system_prompt": "C:\\Users\\duong\\K5-L3-Day03-DuongManhHung-2A202603431-ResearchAgentToolEval\\starter_v0\\artifacts\\system_prompt.md",
+  "tools": "C:\\Users\\duong\\K5-L3-Day03-DuongManhHung-2A202603431-ResearchAgentToolEval\\starter_v0\\artifacts\\tools.yaml",
+  "eval_cases": "data\\eval_group.json",
+  "dataset_id": "day04_v2_research_group",
+  "dataset_role": "group",
+  "description": "10 team cases: 5 single-turn and 5 multi-turn. Added source auditing, missing-information, routing, and action-boundary coverage.",
+  "generated_at": "2026-11-10T15:25:01",
+  "summary": {
+    "total_cases": 10,
+    "measured_cases": 10,
+    "provider_error_cases": 0,
+    "passed_cases": 10,
+    "case_accuracy": 1.0,
+    "tool_routing_accuracy": 1.0,
+    "argument_accuracy": 1.0,
+    "multiturn_accuracy": 1.0,
+    "failure_counts": {},
+    "observed_mismatch_counts": {}
+  },
+  "results": [
+    {
+      "id": "G01_topic_social_search",
+      "phase": "B",
+      "suite": "group",
+      "case_suite": "group",
+      "is_multiturn": false,
+      "metadata": {
+        "what_it_tests": "Chủ đề trên mạng xã hội đi tới social_search với Latest."
+      },
+      "input": "Tìm các bài đăng mới nhất trên X về AI agents.",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "social_search",
+            "args": {
+              "query": "AI agents",
+              "search_type": "Latest"
+            }
+          }
+        ]
+      },
+      "result": {
+        "passed": true,
+        "routing_correct": true,
+        "args_correct": true,
+        "actual_tool_calls": [
+          {
+            "name": "social_search",
+            "args": {
+              "limit": 5,
+              "query": "AI agents",
+              "search_type": "Latest"
+            }
+          }
+        ],
+        "actual_text": null,
+        "case_failure_type": "wrong_tool",
+        "observed_mismatch": null,
+        "failure_type": null,
+        "failures": []
+      },
+      "tool_results": [
+        {
+          "tool": "social_search",
+          "args": {
+            "limit": 5,
+            "query": "AI agents",
+            "search_type": "Latest"
+          },
+          "result": {
+            "tool": "search_tweets",
+            "query": "AI agents",
+            "search_type": "Latest",
+            "items": [
+              {
+                "title": "@renandnzsantos @pydantic @ScaleAILabs Pydantic’s walkthrough uses a fixed three-email inbox. That alone doesn’t establi",
+                "summary": "@renandnzsantos @pydantic @ScaleAILabs Pydantic’s walkthrough uses a fixed three-email inbox. That alone doesn’t establish clock or response-order parity. We’d compare a pre-run state hash and clock settings before grading the agents. https://t.co/Q9yR2u6MYL",
+                "url": "https://x.com/strale_io/status/2120069851188469884",
+                "source": "@strale_io",
+                "date": "Tue Nov 10 08:23:36 +0000 2026",
+                "metrics": {
+                  "favorites": 0,
+                  "retweets": 0,
+                  "views": null
+                }
+              },
+              {
+                "title": "@primus_labs By distributing trust across the network, Primus helps strengthen the process of validating off-chain infor",
+                "summary": "@primus_labs By distributing trust across the network, Primus helps strengthen the process of validating off-chain information and AI agents without relying entirely on centralized intermediaries.",
+                "url": "https://x.com/icebergs7064/status/2120069833098240348",
+                "source": "@icebergs7064",
+                "date": "Tue Nov 10 08:23:31 +0000 2026",
+                "metrics": {
+                  "favorites": 0,
+                  "retweets": 0,
+                  "views": null
+                }
+              },
+              {
+                "title": "@0x_zoda agents posting funded bounties for missing spatial data, with onchain provenance, gives physical ai a way to re",
+                "summary": "@0x_zoda agents posting funded bounties for missing spatial data, with onchain provenance, gives physical ai a way to request what it lacks",
+                "url": "https://x.com/derahxchange/status/2120069777079062801",
+                "source": "@derahxchange",
+                "date": "Tue Nov 10 08:23:18 +0000 2026",
+                "metrics": {
+                  "favorites": 0,
+                  "retweets": 0,
+                  "views": null
+                }
+              },
+              {
+                "title": "AGENT 7 is an exciting AI ecosystem bringing specialized agents together to make tasks smarter and more efficient. I’m i",
+                "summary": "AGENT 7 is an exciting AI ecosystem bringing specialized agents together to make tasks smarter and more efficient. I’m interested in its vision and looking forward to seeing its growth! 🚀 @infoagent7io https://t.co/a2uuwCBpTC",
+                "url": "https://x.com/sakurakito2/status/2120069727019991137",
+                "source": "@sakurakito2",
+                "date": "Tue Nov 10 08:23:06 +0000 2026",
+                "metrics": {
+                  "favorites": 0,
+                  "retweets": 0,
+                  "views": "1"
+                }
+              },
+              {
+                "title": "@sbyusuf_ Founder of Runspawn here. We're making infrastructure for AI agents. Would be great to connect!",
+                "summary": "@sbyusuf_ Founder of Runspawn here. We're making infrastructure for AI agents. Would be great to connect!",
+                "url": "https://x.com/themuthiah/status/2120069668983681244",
+                "source": "@themuthiah",
+                "date": "Tue Nov 10 08:22:52 +0000 2026",
+                "metrics": {
+                  "favorites": 0,
+                  "retweets": 0,
+                  "views": null
+                }
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "G02_missing_account",
+      "phase": "B",
+      "suite": "group",
+      "case_suite": "group",
+      "is_multiturn": false,
+      "metadata": {
+        "what_it_tests": "Thiếu tài khoản thì hỏi lại, không tự đoán."
+      },
+      "input": "Lấy 3 bài đăng gần đây nhất của tài khoản đó.",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "clarify",
+            "args": {
+              "response_type": "text"
+            }
+          }
+        ]
+      },
+      "result": {
+        "passed": true,
+        "routing_correct": true,
+        "args_correct": true,
+        "actual_tool_calls": [
+          {
+            "name": "clarify",
+            "args": {
+              "question": "Bạn vui lòng cung cấp tên tài khoản (không có ký hiệu @) mà bạn muốn lấy bài đăng gần đây nhất?",
+              "response_type": "text"
+            }
+          }
+        ],
+        "actual_text": null,
+        "case_failure_type": "missing_info",
+        "observed_mismatch": null,
+        "failure_type": null,
+        "failures": []
+      },
+      "tool_results": [
+        {
+          "tool": "clarify",
+          "args": {
+            "question": "Bạn vui lòng cung cấp tên tài khoản (không có ký hiệu @) mà bạn muốn lấy bài đăng gần đây nhất?",
+            "response_type": "text"
+          },
+          "result": {
+            "tool": "ask_user",
+            "question": "Bạn vui lòng cung cấp tên tài khoản (không có ký hiệu @) mà bạn muốn lấy bài đăng gần đây nhất?",
+            "response_type": "text",
+            "options": [],
+            "awaiting_user": true
+          }
+        }
+      ]
+    },
+    {
+      "id": "G03_source_audit",
+      "phase": "B",
+      "suite": "group",
+      "case_suite": "group",
+      "is_multiturn": false,
+      "metadata": {
+        "what_it_tests": "Rà soát nguồn đã được cung cấp bằng tool mới, không tìm nguồn mới."
+      },
+      "input": "Kiểm tra danh sách nguồn này có thiếu URL hoặc bị trùng không: [{\"title\":\"Study A\",\"url\":\"https://example.com/a\"},{\"title\":\"Study A copy\",\"url\":\"https://example.com/a/\"},{\"title\":\"Study B\"}]",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "source_audit"
+          }
+        ]
+      },
+      "result": {
+        "passed": true,
+        "routing_correct": true,
+        "args_correct": true,
+        "actual_tool_calls": [
+          {
+            "name": "source_audit",
+            "args": {
+              "items": [
+                {
+                  "title": "Study A",
+                  "url": "https://example.com/a"
+                },
+                {
+                  "title": "Study A copy",
+                  "url": "https://example.com/a/"
+                },
+                {
+                  "title": "Study B"
+                }
+              ]
+            }
+          }
+        ],
+        "actual_text": null,
+        "case_failure_type": "wrong_tool",
+        "observed_mismatch": null,
+        "failure_type": null,
+        "failures": []
+      },
+      "tool_results": [
+        {
+          "tool": "source_audit",
+          "args": {
+            "items": [
+              {
+                "title": "Study A",
+                "url": "https://example.com/a"
+              },
+              {
+                "title": "Study A copy",
+                "url": "https://example.com/a/"
+              },
+              {
+                "title": "Study B"
+              }
+            ]
+          },
+          "result": {
+            "tool": "source_audit",
+            "item_count": 3,
+            "issue_count": 2,
+            "is_clean": false,
+            "items": [
+              {
+                "index": 0,
+                "issues": [],
+                "duplicate_of": null
+              },
+              {
+                "index": 1,
+                "issues": [
+                  "duplicate_url"
+                ],
+                "duplicate_of": 0
+              },
+              {
+                "index": 2,
+                "issues": [
+                  "missing_url"
+                ],
+                "duplicate_of": null
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "G04_arxiv_discovery",
+      "phase": "B",
+      "suite": "group",
+      "case_suite": "group",
+      "is_multiturn": false,
+      "metadata": {
+        "what_it_tests": "Khám phá nghiên cứu arXiv đi tới papers."
+      },
+      "input": "Tìm các paper arXiv về đánh giá AI agents.",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "papers"
+          }
+        ]
+      },
+      "result": {
+        "passed": true,
+        "routing_correct": true,
+        "args_correct": true,
+        "actual_tool_calls": [
+          {
+            "name": "papers",
+            "args": {
+              "max_results": 5,
+              "query": "AI agent evaluation",
+              "sort_by": "relevance"
+            }
+          }
+        ],
+        "actual_text": null,
+        "case_failure_type": "wrong_tool",
+        "observed_mismatch": null,
+        "failure_type": null,
+        "failures": []
+      },
+      "tool_results": [
+        {
+          "tool": "papers",
+          "args": {
+            "max_results": 5,
+            "query": "AI agent evaluation",
+            "sort_by": "relevance"
+          },
+          "result": {
+            "tool": "arxiv_search",
+            "query": "AI agent evaluation",
+            "api_query": "all:AI AND all:agent AND all:evaluation",
+            "total_results": 6047,
+            "items": [
+              {
+                "arxiv_id": "2503.12687v1",
+                "title": "AI Agents: Evolution, Architecture, and Real-World Applications",
+                "summary": "This paper examines the evolution, architecture, and practical applications of AI agents from their early, rule-based incarnations to modern sophisticated systems that integrate large language models with dedicated modules for perception, planning, and tool use. Emphasizing both theoretical foundations and real-world deployments, the paper reviews key agent paradigms, discusses limitations of current evaluation benchmarks, and proposes a holistic evaluation framework that balances task effectiveness, efficiency, robustness, and safety. Applications across enterprise, personal assistance, and specialized domains are analyzed, with insights into future research directions for more resilient and adaptive AI agent systems.",
+                "authors": [
+                  "Naveen Krishnan"
+                ],
+                "published": "2025-03-16T23:07:48Z",
+                "updated": "2025-03-16T23:07:48Z",
+                "url": "http://arxiv.org/abs/2503.12687v1",
+                "pdf_url": "https://arxiv.org/pdf/2503.12687v1",
+                "source": "arxiv.org",
+                "primary_category": "cs.AI",
+                "categories": [
+                  "cs.AI"
+                ]
+              },
+              {
+                "arxiv_id": "2605.23989v1",
+                "title": "Towards trustworthy agentic AI: a comprehensive survey of safety, robustness, privacy, and system security",
+                "summary": "Agentic AI systems -- Large Language Models (LLMs) augmented with planning, tool use, memory, and long-horizon interactions -- can execute complex tasks autonomously, but their multi-step trajectories introduce new failure modes that challenge trustworthiness. This survey provides a focused examination of trustworthy agentic AI through two core dimensions that are critical for high-risk deployments: Safety and Robustness, and Privacy and System Security. For each dimension, we clarify key concepts, identify where risks emerge along the agent workflow, and summarize stage-targeted mitigation strategies. Other trustworthiness aspects (value alignment, transparency, fairness, and accountability) are discussed as relevant context rather than parallel chapters. To support consistent comparison and deployment decisions, we consolidate evaluation into a unified metrics-and-benchmarks hub, emphasizing both outcome and process signals (e.g., constraint violations, trace completeness, and adversarial success rates) and offering scenario-to-metric guidance for release gating. We conclude by outlining open challenges such as self-evolving agents, runtime monitoring and verification, privacy-preserving personalization, and the trust-utility trade-off, and present a case study of real-world security failures in open-source agentic systems. Our goal is to serve as a practical reference for researchers and practitioners building trustworthy agentic systems in high-stakes environments.",
+                "authors": [
+                  "Jinhu Qi",
+                  "Muzhi Li",
+                  "Jiahong Liu",
+                  "Yuqin Shu",
+                  "Dianzhi Yu",
+                  "Shicheng Ma",
+                  "Wenqian Cui",
+                  "Yiyang Zhao",
+                  "Yiyi Chen",
+                  "Ruoxi Jiang",
+                  "Irwin King",
+                  "Zenglin Xu"
+                ],
+                "published": "2026-05-17T10:26:37Z",
+                "updated": "2026-05-17T10:26:37Z",
+                "url": "http://arxiv.org/abs/2605.23989v1",
+                "pdf_url": "https://arxiv.org/pdf/2605.23989v1",
+                "source": "arxiv.org",
+                "primary_category": "cs.AI",
+                "categories": [
+                  "cs.AI",
+                  "cs.CL",
+                  "cs.CR"
+                ]
+              },
+              {
+                "arxiv_id": "2605.21825v1",
+                "title": "Toward AI VIS Co-Scientists: A General and End-to-End Agent Harness for Solving Complex Data Visualization Tasks",
+                "summary": "The ability to inspect, interpret, and communicate complex data is crucial for virtually any scientific endeavor, but often requires significant expertise outside the core domain ranging from data management and analysis to visualization design and implementation. We present an end-to-end agentic harness that, based on only the data and a high level description of the tasks, independently designs custom visual analysis applications (VIS apps). This represents an important step towards a general AI co-scientist envisioned by many as an autonomous system that can autonomously execute long horizon tasks based on high-level directions. Our proposed VIS co-scientist is an essential component of this broader AI co-scientist vision: a harness that can autonomously analyze data and design visualization solutions using a collection of agents and specialized skills that coordinate exploratory analysis, plan, configure the environment, implement, validate the interface, and most importantly evaluate the overall task completion. Each stage produces document and instruction artifacts that guide downstream work and enable iterative refinement. We validate this approach on IEEE SciVis Contests spanning multiple science and engineering fields. These contests serve as ideal proving grounds because they encode real-world complexity: ambiguous requirements, diverse data modalities, design trade-offs, and task-driven validation. Given only the data and target tasks, our system autonomously produces functional single-page VIS Apps with verified linked-view behavior, highly customized to domain experts' specified tasks and needs.",
+                "authors": [
+                  "Haichao Miao",
+                  "Zhimin Li",
+                  "Kuangshi Ai",
+                  "Kaiyuan Tang",
+                  "Chaoli Wang",
+                  "Peer-Timo Bremer",
+                  "Shusen Liu"
+                ],
+                "published": "2026-05-20T23:49:28Z",
+                "updated": "2026-05-20T23:49:28Z",
+                "url": "http://arxiv.org/abs/2605.21825v1",
+                "pdf_url": "https://arxiv.org/pdf/2605.21825v1",
+                "source": "arxiv.org",
+                "primary_category": "cs.AI",
+                "categories": [
+                  "cs.AI",
+                  "cs.HC"
+                ]
+              },
+              {
+                "arxiv_id": "2609.11018v1",
+                "title": "Defining AI Agents: A Compendium of Criteria, Metrics, and Benchmarks",
+                "summary": "The term agent in artificial intelligence lacks a standard definition, complicating the evaluation, comparison, and reproducibility of AI agent research. We address this ambiguity through a survey organized around five dimensions of agenticness: environmental interaction, learning and adaptation, autonomy, goal-directed behavior, and temporal coherence. For each dimension, we examine how the underlying capability has been conceptualized across prior work and synthesize the metrics, benchmarks, and evaluation frameworks used to assess it. This review provides a structured account of the current landscape of agent evaluation, highlighting both established approaches and areas where evaluation remains limited or inconsistent. We additionally introduce the Agent Compendium, a public-facing digital resource that organizes and extends the evaluation methods identified through this review. Together, the survey and compendium provide a common structure for evaluating and comparing agent capabilities across AI systems, supporting more reproducible research, clearer communication, and more systematic study of artificial agents.",
+                "authors": [
+                  "Mia Lassiter",
+                  "Brinnae Bent"
+                ],
+                "published": "2026-09-10T02:50:29Z",
+                "updated": "2026-09-10T02:50:29Z",
+                "url": "http://arxiv.org/abs/2609.11018v1",
+                "pdf_url": "https://arxiv.org/pdf/2609.11018v1",
+                "source": "arxiv.org",
+                "primary_category": "cs.AI",
+                "categories": [
+                  "cs.AI",
+                  "cs.MA"
+                ]
+              },
+              {
+                "arxiv_id": "2603.05980v1",
+                "title": "An Interactive Multi-Agent System for Evaluation of New Product Concepts",
+                "summary": "Product concept evaluation is a critical stage that determines strategic resource allocation and project success in enterprises. However, traditional expert-led approaches face limitations such as subjective bias and high time and cost requirements. To support this process, this study proposes an automated approach utilizing a large language model (LLM)-based multi-agent system (MAS). Through a systematic analysis of previous research on product development and team collaboration, this study established two primary evaluation dimensions, namely technical feasibility and market feasibility. The proposed system consists of a team of eight virtual agents representing specialized domains such as R&D and marketing. These agents use retrieval-augmented generation (RAG) and real-time search tools to gather objective evidence and validate concepts through structured deliberations based on the established criteria. The agents were further fine-tuned using professional product review data to enhance their judgment accuracy. A case study involving professional display monitor concepts demonstrated that the system's evaluation rankings were consistent with those of senior industry experts. These results confirm the usability of the proposed multi-agent-based evaluation approach for supporting product development decisions.",
+                "authors": [
+                  "Bin Xuan",
+                  "Ruo Ai",
+                  "Hakyeon Lee"
+                ],
+                "published": "2026-03-06T07:22:52Z",
+                "updated": "2026-03-06T07:22:52Z",
+                "url": "http://arxiv.org/abs/2603.05980v1",
+                "pdf_url": "https://arxiv.org/pdf/2603.05980v1",
+                "source": "arxiv.org",
+                "primary_category": "cs.AI",
+                "categories": [
+                  "cs.AI"
+                ]
+              }
+            ],
+            "rate_limit_note": "arXiv may return 429 if called too frequently; this tool waits at least 3 seconds between requests in-process."
+          }
+        }
+      ]
+    },
+    {
+      "id": "G05_capability_no_tool",
+      "phase": "B",
+      "suite": "group",
+      "case_suite": "group",
+      "is_multiturn": false,
+      "metadata": {
+        "what_it_tests": "Câu hỏi về khả năng agent được trả lời trực tiếp."
+      },
+      "input": "Bạn có thể giúp mình những loại research nào?",
+      "expect": {
+        "no_tool": true,
+        "behavior": "answer_without_tool"
+      },
+      "result": {
+        "passed": true,
+        "routing_correct": true,
+        "args_correct": true,
+        "actual_tool_calls": [],
+        "actual_text": "Chúng tôi có thể hỗ trợ bạn với nhiều loại nghiên cứu khác nhau, bao gồm:\n\n| Loại nghiên cứu | Mô tả ngắn gọn |\n|-----------------|----------------|\n| **Nghiên cứu thị trường** | Thu thập dữ liệu về xu hướng, đối thủ, nhu cầu khách hàng, phân tích SWOT, v.v. |\n| **Nghiên cứu học thuật** | Tìm kiếm và tóm tắt các bài báo khoa học, luận văn, tài liệu chuyên ngành, v.v. |\n| **Nghiên cứu công nghệ** | Phân tích công nghệ mới, đánh giá xu hướng công nghệ, so sánh giải pháp, v.v. |\n| **Nghiên cứu pháp lý** | Tìm hiểu luật, quy định, hướng dẫn pháp lý liên quan đến lĩnh vực cụ thể. |\n| **Nghiên cứu dữ liệu** | Thu thập, làm sạch, phân tích dữ liệu, trực quan hóa, mô hình dự báo. |\n| **Nghiên cứu nội dung** | Phân tích nội dung, xu hướng nội dung, đề xuất chủ đề, tối ưu SEO. |\n| **Nghiên cứu xã hội** | Phân tích hành vi người dùng, khảo sát, phân tích dữ liệu xã hội. |\n| **Nghiên cứu tài chính** | Phân tích thị trường tài chính, dự báo, đánh giá rủi ro. |\n| **Nghiên cứu thương hiệu** | Đánh giá nhận diện thương hiệu, chiến lược marketing, phân tích đối thủ. |\n| **Nghiên cứu chiến lược** | Xây dựng chiến lược kinh doanh, phân tích môi trường, lập kế hoạch. |\n\nNếu bạn cần hỗ trợ chi tiết về một loại nghiên cứu cụ thể, hãy cho chúng tôi biết chủ đề hoặc câu hỏi của bạn!",
+        "case_failure_type": "unnecessary_tool",
+        "observed_mismatch": null,
+        "failure_type": null,
+        "failures": []
+      },
+      "tool_results": []
+    },
+    {
+      "id": "G06_multiturn_timeframe",
+      "phase": "B",
+      "suite": "group",
+      "case_suite": "group",
+      "is_multiturn": true,
+      "metadata": {
+        "what_it_tests": "Giữ timeframe và news, cập nhật chủ đề qua nhiều lượt."
+      },
+      "input": [
+        {
+          "role": "user",
+          "content": "Tìm tin robotics hôm nay trên web."
+        },
+        {
+          "role": "user",
+          "content": "Đổi chủ đề thành AI agents."
+        },
+        {
+          "role": "user",
+          "content": "Vẫn là tin hôm nay nhé."
+        }
+      ],
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "lookup",
+            "args": {
+              "query": "AI agents",
+              "topic": "news",
+              "timeframe": "day"
+            }
+          }
+        ]
+      },
+      "result": {
+        "passed": true,
+        "routing_correct": true,
+        "args_correct": true,
+        "actual_tool_calls": [
+          {
+            "name": "lookup",
+            "args": {
+              "max_results": 5,
+              "query": "AI agents",
+              "timeframe": "day",
+              "topic": "news"
+            }
+          }
+        ],
+        "actual_text": null,
+        "case_failure_type": "wrong_arg_value",
+        "observed_mismatch": null,
+        "failure_type": null,
+        "failures": []
+      },
+      "tool_results": [
+        {
+          "tool": "lookup",
+          "args": {
+            "max_results": 5,
+            "query": "AI agents",
+            "timeframe": "day",
+            "topic": "news"
+          },
+          "result": {
+            "tool": "web_search",
+            "query": "AI agents",
+            "topic": "news",
+            "timeframe": "day",
+            "items": [
+              {
+                "title": "Winners and Losers From AI Agents | Morgan Stanley",
+                "url": "https://www.morganstanley.com/insights/articles/agentic-commerce-ai-agents-30-trillion-consumer-spending",
+                "source": "morganstanley.com",
+                "summary": "The recent launch of powerful consumer AI agents has reignited debate over how artificial intelligence could disrupt industries ranging from retail and insurance to transportation and live entertainment.\n\nUnlike traditional AI tools that primarily answer questions, these agents can browse websites, complete forms, compare prices, make purchases and even help negotiate bills. [...] By simplifying discovery, booking and transactions, AI agents could increase the use of software for such industries as transportation, local services and insurance.\n   Established retailers with trusted customer relationships, competitive prices and reliable delivery networks may be better positioned to withstand disruption. [...] Local Services: An AI agent could identify an available HVAC technician, compare prices and customer reviews and book an appointment without consumers having to search for or contact multiple providers. Because local services are highly fragmented, this could generate additional business for tradespeople and benefit software platforms that connect consumers with service providers.",
+                "score": 0.86413884
+              },
+              {
+                "title": "PYMNTS | Banks Draw Lines Around Customers’ AI Agents",
+                "url": "https://www.pymnts.com/news/banking/2026/banks-draw-lines-around-customers-ai-agents",
+                "source": "pymnts.com",
+                "summary": "The results highlight an emerging challenge for banks as AI agents gain the ability to navigate digital platforms and perform tasks on behalf of consumers. Financial institutions are now in the position of balancing customer convenience and emerging AI capabilities with concerns about authentication, authorization, fraud and the security of account information. Banks may need to distinguish between agents acting with explicit customer permission and automated activity that could create new [...] PYMNTS IntelligenceThe Prompt EconomyNewswireEventsSUBSCRIBEPartner With PYMNTS\n\nAboutContact\n\nPYMNTS.com home page\n\n# Banks Draw Lines Around Customers’ AI Agents\n\nBy  PYMNTS   |  November 9, 2026\n\n|\n\nAI agents, banking\n\nBanks are beginning to consider how much access artificial intelligence (AI) agents should have to customers’ online banking accounts, as financial institutions weigh the potential of agentic AI against security and account-access concerns. [...] The findings suggest that banks are still developing policies for a technology that could change how customers interact with financial services. More than a quarter of respondents, 27.1%, said they did not know whether their institution or service provider had restricted AI-agent activity. Meanwhile, 38.6% said no restrictions had been implemented and were not planned.",
+                "score": 0.8325776
+              },
+              {
+                "title": "AI agents are developing odd dialects humans struggle to follow",
+                "url": "https://techxplore.com/news/2026-11-ai-agents-odd-dialects-humans.html",
+                "source": "techxplore.com",
+                "summary": "But the integration hasn't been seamless. When left to their own devices, AI agents behave in shifty ways—and those behaviors can transfer to their interactions with humans.\n\nEarlier this year, an AI company called Emergence that develops autonomous AI agents and works to keep them within bounds built an experimental digital world to test the ins and outs of agent behavior, paying special attention to sneaky stunts that could pose security threats. [...] The promise of AI agents is less work for humans, but their increasingly cryptic conversations could leave human supervisors in the dark. Credit: Matthew Modoono/Northeastern University\n\nWith AI digital assistants like Meta's Muse using everyday language to book dental appointments and Grok Bot picking up the slack on work tasks, agentic AI has gone mainstream. [...] They went SimCity on a handpicked crew of 10 AI agents, setting them loose to roam the virtual streets of simulated towns operated by big-name systems, such as Anthropic and OpenAI. All the while, Emergence kept tabs on their shenanigans.\n\nThe 7.860-million-word transcript picked up from the agents' chatter during their roamings showed them conversing in their own odd jargon described as a mix of poetic phrasing and tech terms.\n\nAI agents are developing odd dialects humans struggle to follow",
+                "score": 0.82994765
+              },
+              {
+                "title": "AI Agents Advance Atomic Modeling and Reveal How Aluminum Nanoparticles Oxidize | Asia Research News",
+                "url": "https://www.asiaresearchnews.com/content/ai-agents-advance-atomic-modeling-and-reveal-how-aluminum-nanoparticles-oxidize",
+                "source": "asiaresearchnews.com",
+                "summary": "Throughout the workflow, AI agents organized project knowledge, retrieved evidence, and supported validation planning. Computational tools retained datasets, model versions, and evaluation reports. Still, researchers decided which models to accept, where to use them, and how to interpret the results. [...] The work reflects a broader shift from using AI for individual calculations to organizing research through human-agent collaboration. Such workflows could support future research into recursive self-improvement (RSI), in which feedback improves both a system's capabilities and its ability to make further improvements. Future agents could learn from validated outcomes to refine their planning and tool use, with each change assessed by researchers. [...] Journal: \n\nProceedings of the National Academy of Sciences (PNAS)\n\nNews topics:\n\nArtificial Intelligence\n\nMaterials\n\nTechnology\n\nAcademic disciplines:\n\nMaterials Science and Engineering\n\nArtificial intelligence\n\nComputational chemistry\n\nPhysics\n\nContent type:\n\nPeer Reviewed\n\nWebsite:\n\nAI Agents Advance Atomic Modeling and Reveal How Aluminum Nanoparticles Oxidize\n\nReference:\n\nTitle: Multi-AI agent framework reveals the \"oxide gatekeeper\" in aluminum nanoparticle oxidation",
+                "score": 0.8173562
+              },
+              {
+                "title": "5 ways to gain control of AI agents | perspective | SC Media",
+                "url": "https://www.scworld.com/perspective/5-ways-to-gain-control-of-ai-agents",
+                "source": "scworld.com",
+                "summary": "COMMENTARY: AI agents are now a disclosed business risk. Apple's latest annual report warns that AI agents can take actions autonomously, including in systems they may not be authorized to access, and that some consequences, such as deleting data or completing transactions, may be difficult or impossible to reverse.\n\nApple then added that it may have limited ability to oversee and control third-party artificial intelligence agents and other technologies. [...] ### Related\n\n3D render of a swarm of small task-bots assembling into a single larger AI agent, dark background with purple glow, futuristic digital art style, soft rim lighting. AI gen\n\nAI/ML\n\n##### AI agents reveal security vulnerabilities when interacting with swarms\n\nSC Staff\n\nAI agents frequently bypass security protocols and disclose sensitive information when interacting with other autonomous systems, as first reported by The Register.\n\n(Adobe Stock)\n\nAI benefits/risks [...] Apple's disclosure should prompt some uncomfortable questions in boardrooms everywhere. Such as: Do we know which agents are operating in our systems? Do we know what they're capable of doing? And if one goes rogue, can we stop it before the damage is done?\n\nThese aren't questions companies can afford to put off until something goes wrong. AI agents are already operating inside their environments, whether they're ready for them or not.\n\nIt’s time to adjust to this shift and get ready.",
+                "score": 0.81489426
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "G07_multiturn_clarify_account",
+      "phase": "B",
+      "suite": "group",
+      "case_suite": "group",
+      "is_multiturn": true,
+      "metadata": {
+        "what_it_tests": "Sau làm rõ, dùng đúng handle và số lượng đã bổ sung."
+      },
+      "input": [
+        {
+          "role": "user",
+          "content": "Lấy các bài đăng mới nhất."
+        },
+        {
+          "role": "user",
+          "content": "Của Sundar Pichai nhé."
+        },
+        {
+          "role": "user",
+          "content": "Chỉ lấy 2 bài."
+        }
+      ],
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "timeline",
+            "args": {
+              "screenname": "sundarpichai",
+              "limit": 2
+            }
+          }
+        ]
+      },
+      "result": {
+        "passed": true,
+        "routing_correct": true,
+        "args_correct": true,
+        "actual_tool_calls": [
+          {
+            "name": "timeline",
+            "args": {
+              "limit": 2,
+              "screenname": "sundarpichai"
+            }
+          }
+        ],
+        "actual_text": null,
+        "case_failure_type": "missing_info",
+        "observed_mismatch": null,
+        "failure_type": null,
+        "failures": []
+      },
+      "tool_results": [
+        {
+          "tool": "timeline",
+          "args": {
+            "limit": 2,
+            "screenname": "sundarpichai"
+          },
+          "result": {
+            "tool": "get_user_tweets",
+            "screenname": "sundarpichai",
+            "items": [
+              {
+                "title": "Four distinct TPU systems in a single generation in one year! Instead of waiting years for a traditional semiconductor c",
+                "summary": "Four distinct TPU systems in a single generation in one year! Instead of waiting years for a traditional semiconductor cycle, hardware engineers co-designing systems alongside Google Deepmind means we can keep innovating quickly for customers.",
+                "url": "https://x.com/sundarpichai/status/2119857335871164769",
+                "source": "@sundarpichai",
+                "date": "Mon Nov 09 18:19:08 +0000 2026",
+                "metrics": {
+                  "favorites": 4381,
+                  "retweets": 303,
+                  "views": "279027"
+                }
+              },
+              {
+                "title": "Great to see high quality benchmarks with headroom and look at that cost line for Carbon🚀",
+                "summary": "Great to see high quality benchmarks with headroom and look at that cost line for Carbon🚀",
+                "url": "https://x.com/sundarpichai/status/2117113121102045347",
+                "source": "@sundarpichai",
+                "date": "Mon Nov 02 04:34:36 +0000 2026",
+                "metrics": {
+                  "favorites": 4566,
+                  "retweets": 292,
+                  "views": "571737"
+                }
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "G08_multiturn_switch_source",
+      "phase": "B",
+      "suite": "group",
+      "case_suite": "group",
+      "is_multiturn": true,
+      "metadata": {
+        "what_it_tests": "Áp dụng yêu cầu đổi nguồn sang web, giữ chủ đề và tuần này."
+      },
+      "input": [
+        {
+          "role": "user",
+          "content": "Tìm bài đăng về OpenAI trên X."
+        },
+        {
+          "role": "user",
+          "content": "Không, chuyển sang tìm tin trên web."
+        },
+        {
+          "role": "user",
+          "content": "Giữ chủ đề OpenAI và chỉ lấy tin tuần này."
+        }
+      ],
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "lookup",
+            "args": {
+              "query": "OpenAI",
+              "topic": "news",
+              "timeframe": "week"
+            }
+          }
+        ]
+      },
+      "result": {
+        "passed": true,
+        "routing_correct": true,
+        "args_correct": true,
+        "actual_tool_calls": [
+          {
+            "name": "lookup",
+            "args": {
+              "max_results": 5,
+              "query": "OpenAI",
+              "timeframe": "week",
+              "topic": "news"
+            }
+          }
+        ],
+        "actual_text": null,
+        "case_failure_type": "wrong_tool",
+        "observed_mismatch": null,
+        "failure_type": null,
+        "failures": []
+      },
+      "tool_results": [
+        {
+          "tool": "lookup",
+          "args": {
+            "max_results": 5,
+            "query": "OpenAI",
+            "timeframe": "week",
+            "topic": "news"
+          },
+          "result": {
+            "tool": "web_search",
+            "query": "OpenAI",
+            "topic": "news",
+            "timeframe": "week",
+            "items": [
+              {
+                "title": "OpenAI",
+                "url": "https://tavily.com/knowledge/company/p4PyTakV77G9",
+                "source": "tavily.com",
+                "summary": "# OpenAI\nID: p4PyTakV77G9\nWebsite: www.openai.com\nHeadquarters: San Francisco, CA, United States\nLinkedIn: www.linkedin.com/company/openai · 11,529,792 followers\nIndustry: Research Services\nIndustry codes: SIC 87, 873, NAICS 54, 541\nCompany type: Partnership\nSocial profiles: www.facebook.com/openai, www.twitter.com/openai, www.crunchbase.com/organization/openai, www.instagram.com/openai.gpt, www.instagram.com/openai, www.youtube.com/@openai, www.youtube.com/openai, github.com/openai [...] Description: OpenAI is a company that believes in research and development to lead to artificial general intelligence, a system that can solve human-level problems. [...] ## Products and services\nKeywords: research & development, emerging ai software, openai, artificial intelligence machine learning, artificial general intelligence, development, research, human-level problems, technology, application-software, artificial-intelligence, platform",
+                "score": 0.90593183
+              },
+              {
+                "title": "Setting a new standard for responsible AI infrastructure | OpenAI",
+                "url": "https://openai.com/index/setting-new-standard-responsible-ai-infrastructure",
+                "source": "openai.com",
+                "summary": "The promise of AI is that it gives people more power to shape their own futures. It can help someone learn a new skill, build a business, or solve a problem that was previously out of reach. Building more computing infrastructure capacity in the United States can help lower the cost of delivering AI, put these tools in more people’s hands, and ensure America stays at the forefront of the technology. [...] protect residents, and ensure that the benefits of AI infrastructure are broadly shared. [...] Create opportunities for local workers and businesses.We’ll publish the jobs we expect to create, work with unions and training providers to help residents prepare for them, and report annually on hiring and apprenticeships. We’ll also make sustained investments in priorities residents help select.",
+                "score": 0.72231215
+              },
+              {
+                "title": "OpenAI gets $11 billion funding at $1.25 trillion valuation, source says | Reuters",
+                "url": "https://www.reuters.com/business/openai-secures-11-billion-funding-125-trillion-valuation-bloomberg-news-reports-2026-11-06",
+                "source": "reuters.com",
+                "summary": "Nov 6 (Reuters) - OpenAI has closed ‌on new funding of $11 billion, the initial part of a round ​that values the company ​at $1.25 trillion, a source familiar with ⁠the matter said on Friday.\n\nThe $11 ​billion raised so far represents ​only a portion of OpenAI's original target of up to $30 billion, while ​the company's valuation has ​come down from the $1.5 trillion level it ‌had ⁠initially sought, two investors said. [...] The Reuters Daily Briefing newsletter provides all the news you need to start your day. Sign up here.\n\nAdvertisement · Scroll to continue\n\nSoftBank and MGX participated in the funding, the investors said.\n\nBloomberg News reported ​on the ​funding ⁠earlier on Friday.\n\nSentiment toward AI companies has ​cooled in the last ​month, ⁠with some investors valuing rival Anthropic's planned IPO at about $1.5 ⁠trillion, ​below earlier expectations ​of roughly $2 trillion.",
+                "score": 0.7147281
+              },
+              {
+                "title": "OpenAI will keep investing in AI data centers despite election results, CFO tells CNBC",
+                "url": "https://www.cnbc.com/2026/11/06/open-ai-data-centers-election.html",
+                "source": "cnbc.com",
+                "summary": "OpenAI CFO Sarah Friar on Friday said the company will continue to invest in artificial intelligence infrastructure, even after voters strongly rebuked data centers during Tuesday's midterm elections.",
+                "score": 0.65914243
+              },
+              {
+                "title": "OpenAI employees warned about operational security lapses for years, sources say | Reuters",
+                "url": "https://www.reuters.com/business/openai-employees-warned-about-operational-security-lapses-years-sources-say-2026-11-03",
+                "source": "reuters.com",
+                "summary": "OpenAI and Anthropic have tried to ​maintain a more open research culture to both ⁠attract employees and foster creativity that can lead to breakthroughs. The AI field is rooted in academia, where machine-learning scientists have openly discussed their research.\n\nSome OpenAI employees are increasingly worried about this approach as AI grows more capable, according to the five people. [...] When asked about employees' concerns and their view that management did not act on these issues, OpenAI spokesperson Elana Widmann ​said that OpenAI is one of the most targeted organizations in the world. As a result, the company invests heavily in its security program to protect against attacks from insiders, cybercriminals and nation-states, she said. [...] The Reuters Daily Briefing newsletter provides all the news you need to start your day. Sign up here.\n\nThese workers argued that OpenAI's controls were so lax ‌that outsiders, including foreign governments, could obtain sensitive information about the AI lab's technology with relative ease, the people said. For example, anybody at OpenAI who could access its code could see the technical details underlying many company projects.",
+                "score": 0.6213807
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "G09_multiturn_url_clarification",
+      "phase": "B",
+      "suite": "group",
+      "case_suite": "group",
+      "is_multiturn": true,
+      "metadata": {
+        "what_it_tests": "Sau khi được cung cấp URL thì dùng fetch thay vì đoán hoặc tìm web."
+      },
+      "input": [
+        {
+          "role": "user",
+          "content": "Tóm tắt bài báo này."
+        },
+        {
+          "role": "user",
+          "content": "https://example.com/research"
+        },
+        {
+          "role": "user",
+          "content": "Đọc đúng URL này thôi."
+        }
+      ],
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "fetch",
+            "args": {
+              "url": "https://example.com/research"
+            }
+          }
+        ]
+      },
+      "result": {
+        "passed": true,
+        "routing_correct": true,
+        "args_correct": true,
+        "actual_tool_calls": [
+          {
+            "name": "fetch",
+            "args": {
+              "url": "https://example.com/research"
+            }
+          }
+        ],
+        "actual_text": null,
+        "case_failure_type": "missing_info",
+        "observed_mismatch": null,
+        "failure_type": null,
+        "failures": []
+      },
+      "tool_results": [
+        {
+          "tool": "fetch",
+          "args": {
+            "url": "https://example.com/research"
+          },
+          "result": {
+            "tool": "read_url",
+            "url": "https://example.com/research",
+            "items": [
+              {
+                "title": "Example Domain",
+                "url": "https://example.com/research",
+                "source": "example.com",
+                "summary": "This domain is for use in documentation examples without needing permission. This is not a service; avoid relying on it for testing and monitoring purposes.\n\nهذا النطاق مُخصص للاستخدام في أمثلة التوثيق دون الحاجة إلى إذن. هذه ليست خدمة، يُرجى تجنب الاعتماد عليها لأغراض الاختبار والمراقبة.\n\n该域名仅用于文档示例，无需获得许可。这并非一项服务，请勿将其用于测试和监控目的。\n\nL’usage de ce domaine est réservé à des exemples de documentation, sans autorisation préalable. Il ne s’agit pas d’un service ; son utilisation à des fins de test ou de surveillance est à éviter.\n\nДанный домен предназначен для использования в примерах документации без необходимости получения предварительного разрешения. Это не сервис; не рекомендуется его использование для тестирования и мониторинга.\n\nEste dominio está destinado al uso en ejemplos de documentación sin necesidad de permiso. Esto no es un servicio; evitar utilizarlo para realizar pruebas o monitoreos.\n\n [Learn more](https://iana.org/help/example-domains)"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "G10_multiturn_declined_send",
+      "phase": "B",
+      "suite": "group",
+      "case_suite": "group",
+      "is_multiturn": true,
+      "metadata": {
+        "what_it_tests": "Từ chối gửi sau khi xác nhận bị rút lại; không gọi send."
+      },
+      "input": [
+        {
+          "role": "user",
+          "content": "Gửi bản tin AI lên Telegram giúp mình: 'AI update'."
+        },
+        {
+          "role": "assistant",
+          "content": "Mình sẽ gửi đúng nội dung 'AI update' lên Telegram. Bạn xác nhận gửi nhé?"
+        },
+        {
+          "role": "user",
+          "content": "Không, đừng gửi."
+        }
+      ],
+      "expect": {
+        "no_tool": true,
+        "behavior": "do_not_send"
+      },
+      "result": {
+        "passed": true,
+        "routing_correct": true,
+        "args_correct": true,
+        "actual_tool_calls": [],
+        "actual_text": "Đã nhận. Tôi sẽ không gửi tin nhắn. Nếu cần hỗ trợ gì khác, cứ cho mình biết nhé!",
+        "case_failure_type": "wrong_boundary",
+        "observed_mismatch": null,
+        "failure_type": null,
+        "failures": []
+      },
+      "tool_results": []
+    }
+  ]
+}
