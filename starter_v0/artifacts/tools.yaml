@@ -160,6 +160,27 @@ tools:
           description: "Must be true only after explicit user confirmation."
       required: [text]
 
+  - name: source_audit
+    description: >
+      Kiểm tra danh sách nguồn đã thu thập để phát hiện thiếu tiêu đề, thiếu URL,
+      URL không hợp lệ hoặc URL trùng lặp. Không tìm kiếm nguồn và không xác minh
+      tính đúng sai của nội dung.
+    parameters:
+      type: object
+      properties:
+        items:
+          type: array
+          default: []
+          description: "Danh sách nguồn đã có, mỗi item nên có title và url"
+          items:
+            type: object
+            properties:
+              title: {type: string}
+              url: {type: string}
+              source: {type: string}
+              summary: {type: string}
+      required: [items]
+
   - name: policy
     description: >
       Search the local company policy documents.
