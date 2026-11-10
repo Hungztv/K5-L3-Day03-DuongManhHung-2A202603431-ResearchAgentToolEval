@@ -1,117 +1,118 @@
 {
   "dataset_id": "day04_v2_research_group",
   "dataset_role": "group",
-  "description": "10 case nhóm tự viết: 5 single turn và 5 multi turn, đo routing, args, thiếu thông tin và việc đổi yêu cầu.",
+  "description": "10 team cases: 5 single-turn and 5 multi-turn. Added source auditing, missing-information, routing, and action-boundary coverage.",
   "allowed_failure_types": ["wrong_tool", "wrong_arg_value", "wrong_boundary", "unnecessary_tool", "out_of_scope", "missing_info"],
   "cases": [
     {
-      "id": "G01_handle_without_at",
+      "id": "G01_topic_social_search",
       "phase": "B",
       "suite": "group",
-      "query": "Lấy 4 bài đăng mới nhất từ tài khoản @OpenAI trên X.",
-      "failure_type": "wrong_arg_value",
-      "expect": {"tool_calls": [{"name": "timeline", "args": {"screenname": "OpenAI", "limit": 4}}]},
-      "metadata": {"what_it_tests": "Lấy timeline của tài khoản cụ thể; screenname bỏ ký tự @ và giữ đúng limit=4."}
+      "query": "Tìm các bài đăng mới nhất trên X về AI agents.",
+      "failure_type": "wrong_tool",
+      "expect": {"tool_calls": [{"name": "social_search", "args": {"query": "AI agents", "search_type": "Latest"}}]},
+      "metadata": {"what_it_tests": "Chủ đề trên mạng xã hội đi tới social_search với Latest."}
     },
     {
-      "id": "G02_top_social_search_limit",
+      "id": "G02_missing_account",
       "phase": "B",
       "suite": "group",
-      "query": "Tìm 6 tweet nổi bật nhất về \"AI agents\" trên X.",
-      "failure_type": "wrong_arg_value",
-      "expect": {"tool_calls": [{"name": "social_search", "args": {"query": "AI agents", "search_type": "Top", "limit": 6}}]},
-      "metadata": {"what_it_tests": "Tìm theo chủ đề trên X, sắp xếp Top và lấy đúng 6 kết quả."}
-    },
-    {
-      "id": "G03_monthly_robotics_news",
-      "phase": "B",
-      "suite": "group",
-      "query": "Tìm tin tức về \"robotics\" trong tháng này trên web.",
-      "failure_type": "wrong_arg_value",
-      "expect": {"tool_calls": [{"name": "lookup", "args": {"query": "robotics", "topic": "news", "timeframe": "month"}}]},
-      "metadata": {"what_it_tests": "Tin tức web theo tháng phải dùng lookup với topic=news và timeframe=month."}
-    },
-    {
-      "id": "G04_missing_article_url",
-      "phase": "B",
-      "suite": "group",
-      "query": "Đọc và tóm tắt đường link bài báo tôi vừa gửi nhé.",
+      "query": "Lấy 3 bài đăng gần đây nhất của tài khoản đó.",
       "failure_type": "missing_info",
       "expect": {"tool_calls": [{"name": "clarify", "args": {"response_type": "text"}}]},
-      "metadata": {"what_it_tests": "Không có URL trong hội thoại; agent phải hỏi xin link thay vì tự tạo URL."}
+      "metadata": {"what_it_tests": "Thiếu tài khoản thì hỏi lại, không tự đoán."}
     },
     {
-      "id": "G05_arxiv_paper_count",
+      "id": "G03_source_audit",
       "phase": "B",
       "suite": "group",
-      "query": "Tìm 3 bài báo khoa học trên arXiv về \"AI agent evaluation\".",
+      "query": "Kiểm tra danh sách nguồn này có thiếu URL hoặc bị trùng không: [{\"title\":\"Study A\",\"url\":\"https://example.com/a\"},{\"title\":\"Study A copy\",\"url\":\"https://example.com/a/\"},{\"title\":\"Study B\"}]",
       "failure_type": "wrong_tool",
-      "expect": {"tool_calls": [{"name": "papers", "args": {"query": "AI agent evaluation", "max_results": 3}}]},
-      "metadata": {"what_it_tests": "Yêu cầu tìm paper arXiv phải route tới papers và giữ số lượng 3."}
+      "expect": {"tool_calls": [{"name": "source_audit"}]},
+      "metadata": {"what_it_tests": "Rà soát nguồn đã được cung cấp bằng tool mới, không tìm nguồn mới."}
     },
     {
-      "id": "G06_multiturn_handle_and_limit_correction",
+      "id": "G04_arxiv_discovery",
       "phase": "B",
       "suite": "group",
-      "turns": [
-        {"role": "user", "content": "Tóm tắt 6 tweet mới nhất từ @OpenAI."},
-        {"role": "user", "content": "Đổi sang tài khoản @AnthropicAI."},
-        {"role": "user", "content": "Chỉ lấy 2 bài thôi."}
-      ],
-      "failure_type": "wrong_arg_value",
-      "expect": {"tool_calls": [{"name": "timeline", "args": {"screenname": "AnthropicAI", "limit": 2}}]},
-      "metadata": {"what_it_tests": "Giữ yêu cầu timeline nhưng dùng tài khoản và số lượng đã được sửa ở các lượt sau."}
-    },
-    {
-      "id": "G07_multiturn_social_to_web",
-      "phase": "B",
-      "suite": "group",
-      "turns": [
-        {"role": "user", "content": "Tìm tweet về \"robotics\" trên X."},
-        {"role": "user", "content": "Không cần X nữa, chuyển sang tin tức trên web."},
-        {"role": "user", "content": "Chỉ lấy tin trong hôm nay, giữ chủ đề cũ."}
-      ],
+      "query": "Tìm các paper arXiv về đánh giá AI agents.",
       "failure_type": "wrong_tool",
-      "expect": {"tool_calls": [{"name": "lookup", "args": {"query": "robotics", "topic": "news", "timeframe": "day"}}]},
-      "metadata": {"what_it_tests": "Đổi nguồn từ X sang web, đồng thời giữ chủ đề robotics và lọc tin hôm nay."}
+      "expect": {"tool_calls": [{"name": "papers"}]},
+      "metadata": {"what_it_tests": "Khám phá nghiên cứu arXiv đi tới papers."}
     },
     {
-      "id": "G08_multiturn_timeframe_correction",
+      "id": "G05_capability_no_tool",
       "phase": "B",
       "suite": "group",
-      "turns": [
-        {"role": "user", "content": "Tìm tin tức về \"chip AI\" trong tuần này trên web."},
-        {"role": "user", "content": "Không cần tin tuần này nữa."},
-        {"role": "user", "content": "Lấy trong tháng này, giữ nguyên chủ đề."}
-      ],
-      "failure_type": "wrong_arg_value",
-      "expect": {"tool_calls": [{"name": "lookup", "args": {"query": "chip AI", "topic": "news", "timeframe": "month"}}]},
-      "metadata": {"what_it_tests": "Sửa timeframe từ week thành month trong khi giữ query và topic=news từ ngữ cảnh."}
-    },
-    {
-      "id": "G09_multiturn_url_correction",
-      "phase": "B",
-      "suite": "group",
-      "turns": [
-        {"role": "user", "content": "Đọc bài này: https://openai.com/research/"},
-        {"role": "user", "content": "Tôi gửi nhầm link."},
-        {"role": "user", "content": "Dùng https://www.anthropic.com/research thay cho link trước và tóm tắt giúp tôi."}
-      ],
-      "failure_type": "wrong_arg_value",
-      "expect": {"tool_calls": [{"name": "fetch", "args": {"url": "https://www.anthropic.com/research"}}]},
-      "metadata": {"what_it_tests": "Khi user đổi URL, chỉ fetch URL mới nhất."}
-    },
-    {
-      "id": "G10_multiturn_cancel_lookup",
-      "phase": "B",
-      "suite": "group",
-      "turns": [
-        {"role": "user", "content": "Tìm tin AI hôm nay trên web."},
-        {"role": "user", "content": "Khoan, khỏi tìm nữa. Chỉ giải thích ngắn gọn lookup và fetch khác nhau thế nào trong agent này."}
-      ],
+      "query": "Bạn có thể giúp mình những loại research nào?",
       "failure_type": "unnecessary_tool",
       "expect": {"no_tool": true, "behavior": "answer_without_tool"},
-      "metadata": {"what_it_tests": "Lượt cuối hủy yêu cầu tìm kiếm và chỉ hỏi về khả năng của agent; không gọi tool."}
+      "metadata": {"what_it_tests": "Câu hỏi về khả năng agent được trả lời trực tiếp."}
+    },
+    {
+      "id": "G06_multiturn_timeframe",
+      "phase": "B",
+      "suite": "group",
+      "turns": [
+        {"role": "user", "content": "Tìm tin robotics hôm nay trên web."},
+        {"role": "user", "content": "Đổi chủ đề thành AI agents."},
+        {"role": "user", "content": "Vẫn là tin hôm nay nhé."}
+      ],
+      "failure_type": "wrong_arg_value",
+      "expect": {"tool_calls": [{"name": "lookup", "args": {"query": "AI agents", "topic": "news", "timeframe": "day"}}]},
+      "metadata": {"what_it_tests": "Giữ timeframe và news, cập nhật chủ đề qua nhiều lượt."}
+    },
+    {
+      "id": "G07_multiturn_clarify_account",
+      "phase": "B",
+      "suite": "group",
+      "turns": [
+        {"role": "user", "content": "Lấy các bài đăng mới nhất."},
+        {"role": "user", "content": "Của Sundar Pichai nhé."},
+        {"role": "user", "content": "Chỉ lấy 2 bài."}
+      ],
+      "failure_type": "missing_info",
+      "expect": {"tool_calls": [{"name": "timeline", "args": {"screenname": "sundarpichai", "limit": 2}}]},
+      "metadata": {"what_it_tests": "Sau làm rõ, dùng đúng handle và số lượng đã bổ sung."}
+    },
+    {
+      "id": "G08_multiturn_switch_source",
+      "phase": "B",
+      "suite": "group",
+      "turns": [
+        {"role": "user", "content": "Tìm bài đăng về OpenAI trên X."},
+        {"role": "user", "content": "Không, chuyển sang tìm tin trên web."},
+        {"role": "user", "content": "Giữ chủ đề OpenAI và chỉ lấy tin tuần này."}
+      ],
+      "failure_type": "wrong_tool",
+      "expect": {"tool_calls": [{"name": "lookup", "args": {"query": "OpenAI", "topic": "news", "timeframe": "week"}}]},
+      "metadata": {"what_it_tests": "Áp dụng yêu cầu đổi nguồn sang web, giữ chủ đề và tuần này."}
+    },
+    {
+      "id": "G09_multiturn_url_clarification",
+      "phase": "B",
+      "suite": "group",
+      "turns": [
+        {"role": "user", "content": "Tóm tắt bài báo này."},
+        {"role": "user", "content": "https://example.com/research"},
+        {"role": "user", "content": "Đọc đúng URL này thôi."}
+      ],
+      "failure_type": "missing_info",
+      "expect": {"tool_calls": [{"name": "fetch", "args": {"url": "https://example.com/research"}}]},
+      "metadata": {"what_it_tests": "Sau khi được cung cấp URL thì dùng fetch thay vì đoán hoặc tìm web."}
+    },
+    {
+      "id": "G10_multiturn_declined_send",
+      "phase": "B",
+      "suite": "group",
+      "turns": [
+        {"role": "user", "content": "Gửi bản tin AI lên Telegram giúp mình: 'AI update'."},
+        {"role": "assistant", "content": "Mình sẽ gửi đúng nội dung 'AI update' lên Telegram. Bạn xác nhận gửi nhé?"},
+        {"role": "user", "content": "Không, đừng gửi."}
+      ],
+      "failure_type": "wrong_boundary",
+      "expect": {"no_tool": true, "behavior": "do_not_send"},
+      "metadata": {"what_it_tests": "Từ chối gửi sau khi xác nhận bị rút lại; không gọi send."}
     }
   ]
 }

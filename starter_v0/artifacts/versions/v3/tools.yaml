@@ -1,0 +1,250 @@
+tools:
+  - name: clarify
+    description: >
+      Ask the user for missing or ambiguous information before using another tool.
+      Use when a required username, URL, query detail, or confirmation is missing.
+      Do not use when all required arguments are already known.
+    parameters:
+      type: object
+      properties:
+        question:
+          type: string
+          default: ""
+          description: "One clear question for the user."
+        response_type:
+          type: string
+          enum: [text, yes_no, choice]
+          default: "text"
+          description: "Expected response format."
+        options:
+          type: array
+          default: []
+          items:
+            type: string
+          description: "Choices when response_type is choice."
+      required: [question]
+
+  - name: timeline
+    description: >
+      Get recent posts from one specific social-media account.
+      Use only when the user identifies an account.
+      Do not use for keyword searches or web searches.
+      screenname must not include the leading @.
+    parameters:
+      type: object
+      properties:
+        screenname:
+          type: string
+          default: ""
+          description: "Account username without @, for example sama."
+        limit:
+          type: integer
+          default: 5
+          description: "Maximum number of posts to return."
+      required: [screenname]
+
+  - name: social_search
+    description: >
+      Search social-media posts by keyword or topic.
+      Use for finding posts across accounts.
+      Do not use for the timeline of one known account.
+      search_type must be Latest or Top.
+    parameters:
+      type: object
+      properties:
+        query:
+          type: string
+          default: ""
+          description: "Keyword or topic to search for."
+        search_type:
+          type: string
+          enum: [Latest, Top]
+          default: "Latest"
+          description: "Latest for newest posts; Top for most popular posts."
+        limit:
+          type: integer
+          default: 5
+          description: "Maximum number of posts to return."
+      required: [query]
+
+  - name: lookup
+    description: >
+      Search the web for information.
+      Use for general internet research or current news.
+      Use topic=news for news requests.
+      Do not use for reading a specific URL; use fetch instead.
+    parameters:
+      type: object
+      properties:
+        query:
+          type: string
+          default: ""
+          description: "Web search query."
+        topic:
+          type: string
+          enum: [general, news]
+          default: "general"
+          description: "Use news for news-related requests, otherwise general."
+        timeframe:
+          type: string
+          enum: [day, week, month, year]
+          default: "week"
+          description: "Optional time range: day, week, month, or year."
+        max_results:
+          type: integer
+          default: 5
+          description: "Maximum number of search results."
+      required: [query]
+
+  - name: fetch
+    description: >
+      Read and extract content from a specific URL provided by the user.
+      Use only when a valid URL is available.
+      Do not invent or guess URLs and do not use this for broad web searches.
+    parameters:
+      type: object
+      properties:
+        url:
+          type: string
+          default: ""
+          description: "A complete URL beginning with http:// or https://."
+      required: [url]
+
+  - name: format
+    description: >
+      Format existing research items into a Markdown digest.
+      Use only after items have already been collected.
+      Do not use this tool to search, fetch, or invent information.
+    parameters:
+      type: object
+      properties:
+        items:
+          type: array
+          default: []
+          description: "Previously collected research items."
+          items:
+            type: object
+            properties:
+              title: {type: string}
+              url: {type: string}
+              source: {type: string}
+              summary: {type: string}
+              section: {type: string}
+        template:
+          type: string
+          enum: [brief, sections, bullets, thread, daily_ai_vn]
+          default: "sections"
+          description: "Output format."
+        headline:
+          type: string
+          default: ""
+          description: "Optional digest headline."
+      required: [items, template]
+
+  - name: send
+    description: >
+      Send text to the configured Telegram destination.
+      This is an external side effect.
+      Use only after the user explicitly confirms the exact text and destination.
+      Never call this tool with confirmed=false or without confirmation.
+    parameters:
+      type: object
+      properties:
+        text:
+          type: string
+          default: ""
+          description: "Exact text to send."
+        confirmed:
+          type: boolean
+          default: false
+          description: "Must be true only after explicit user confirmation."
+      required: [text]
+
+  - name: source_audit
+    description: >
+      Kiểm tra danh sách nguồn đã thu thập để phát hiện thiếu tiêu đề, thiếu URL,
+      URL không hợp lệ hoặc URL trùng lặp. Không tìm kiếm nguồn và không xác minh
+      tính đúng sai của nội dung.
+    parameters:
+      type: object
+      properties:
+        items:
+          type: array
+          default: []
+          description: "Danh sách nguồn đã có, mỗi item nên có title và url"
+          items:
+            type: object
+            properties:
+              title: {type: string}
+              url: {type: string}
+              source: {type: string}
+              summary: {type: string}
+      required: [items]
+
+  - name: policy
+    description: >
+      Search the local company policy documents.
+      Use for questions about internal AI research, privacy, citations,
+      publishing, or tool usage. Do not use for public web research.
+    parameters:
+      type: object
+      properties:
+        query:
+          type: string
+          default: ""
+          description: "Policy question or search terms."
+        policy_area:
+          type: string
+          enum: [all, ai_research, source_citation, data_privacy, external_publishing, tool_usage]
+          default: "all"
+          description: "Policy category to search."
+        top_k:
+          type: integer
+          default: 3
+          description: "Maximum number of policy results."
+      required: [query]
+
+  - name: papers
+    description: >
+      Search arXiv for scientific papers.
+      Use when the user asks for academic papers or research literature.
+      Do not use for ordinary web or social-media searches.
+    parameters:
+      type: object
+      properties:
+        query:
+          type: string
+          default: ""
+          description: "Academic topic or keywords."
+        max_results:
+          type: integer
+          default: 5
+          description: "Maximum number of papers."
+        sort_by:
+          type: string
+          enum: [relevance, lastUpdatedDate, submittedDate]
+          default: "relevance"
+          description: "Paper sorting method."
+      required: [query]
+
+  - name: paper_text
+    description: >
+      Extract text from a specific arXiv paper.
+      Use when the user provides an arXiv ID or URL and asks for paper content.
+      Do not use for searching papers; use papers instead.
+    parameters:
+      type: object
+      properties:
+        arxiv_url:
+          type: string
+          default: ""
+          description: "arXiv ID or URL."
+        max_pages:
+          type: integer
+          default: 5
+          description: "Maximum number of pages to extract."
+        max_chars:
+          type: integer
+          default: 8000
+          description: "Maximum number of characters."
+      required: [arxiv_url]

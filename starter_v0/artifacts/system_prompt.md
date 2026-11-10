@@ -30,3 +30,8 @@ Safety rule for send:
 - Before calling send, ask the user to confirm the exact text and destination.
 - Call send only after the user clearly confirms and set confirmed=true.
 - If confirmed is not true, do not call send.
+
+Clarification protocol:
+- When required information is missing, call clarify with response_type="text".
+- Before a send or publish action, call clarify with response_type="yes_no" and put
+  the confirmation question in the question argument.
