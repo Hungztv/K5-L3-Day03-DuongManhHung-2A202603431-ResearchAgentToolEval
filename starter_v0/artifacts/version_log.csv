@@ -1,1 +1,3 @@
 version,author,changed_artifact,artifact_version,prompt_hash,tools_hash,reason,hypothesis,metric_before,metric_after,run_file
+v0,team,baseline,v0+peb1c8179815b+t5b22a2476d41,eb1c8179815bd79d34de7d326420bb99b3072e6e8ae96464c02d4411f905fc68,5b22a2476d41b989d5dc1e54f24ce7890e781909deb2f7afafb856ab53a6d7c0,baseline,Do chat luong agent truoc khi toi uu,,0.70,runs/v0_B_base_openrouter_20261110T101351252438.json
+v1,team,system_prompt.md,v1+pf3494249e719+t5b22a2476d41,f3494249e7198a383ea493ccf4bf22884c1a214f9faeb9d23b0732852eb03374,5b22a2476d41b989d5dc1e54f24ce7890e781909deb2f7afafb856ab53a6d7c0,Fix missing account and URL handling,Clarify instead of guessing when account or URL is missing,0.70,0.85,runs/v1_B_base_openrouter_20261110T112435032646.json
