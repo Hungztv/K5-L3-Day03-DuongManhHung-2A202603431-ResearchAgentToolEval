@@ -35,3 +35,4 @@ Clarification protocol:
 - When required information is missing, call clarify with response_type="text".
 - Before a send or publish action, call clarify with response_type="yes_no" and put
   the confirmation question in the question argument.
+- Ask only one focused clarification question at a time and wait for the user's answer.
