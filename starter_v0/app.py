@@ -16,6 +16,7 @@ from versioning import artifact_version_dict, build_artifact_version
 
 ROOT = Path(__file__).parent
 ARTIFACTS_DIR = ROOT / "artifacts"
+VERSIONS_DIR = ARTIFACTS_DIR / "versions"
 TRANSCRIPTS_DIR = ROOT / "transcripts"
 load_lab_env(ROOT)
 
@@ -35,9 +36,17 @@ def save_transcript() -> None:
     )
 
 
+def version_artifact_paths(version: str) -> tuple[Path, Path]:
+    version_dir = VERSIONS_DIR / version
+    prompt_path = version_dir / "system_prompt.md"
+    tools_path = version_dir / "tools.yaml"
+    if not prompt_path.is_file() or not tools_path.is_file():
+        raise ValueError(f"Chưa có artifact snapshot cho {version}.")
+    return prompt_path, tools_path
+
+
 def start_session(provider_name: str, model: str, version: str) -> None:
-    prompt_path = ARTIFACTS_DIR / "system_prompt.md"
-    tools_path = ARTIFACTS_DIR / "tools.yaml"
+    prompt_path, tools_path = version_artifact_paths(version)
     artifact_version = build_artifact_version(version, prompt_path, tools_path)
     timestamp = datetime.now().strftime("%Y%m%dT%H%M%S%f")
     path = TRANSCRIPTS_DIR / f"{version}_{provider_name}_{timestamp}.transcript.json"
@@ -76,7 +85,7 @@ with st.sidebar:
     st.header("Cấu hình")
     provider_name = st.selectbox("Provider", ["groq", "gemini", "openrouter", "openai", "anthropic", "ollama"])
     model = st.text_input("Model (để trống dùng mặc định)", value="")
-    version = st.text_input("Artifact version", value="v0")
+    version = st.selectbox("Artifact version", ["v0", "v1", "v2"])
     if st.button("Bắt đầu phiên mới"):
         start_session(provider_name, model, version)
         st.rerun()
