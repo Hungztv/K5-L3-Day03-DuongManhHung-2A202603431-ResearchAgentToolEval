@@ -3,7 +3,9 @@ tools:
     description: >
       Ask the user for missing or ambiguous information before using another tool.
       Use when a required username, URL, query detail, or confirmation is missing.
-      Do not use when all required arguments are already known.
+      Do not use when all required arguments are already known. Ask one focused
+      question at a time and use response_type=text for missing information or
+      response_type=yes_no for an action confirmation.
     parameters:
       type: object
       properties:
