@@ -1,4 +1,4 @@
-# starter_v0 — tool declarations (intentionally vague).
+﻿# starter_v0 — tool declarations (intentionally vague).
 # Names and descriptions here are a rough first draft. Routing rules, name->handle
 # mapping, arg conventions (news/timeframe/Top), and the send-confirmation boundary
 # are NOT spelled out anywhere yet. Your job is to make these declarations + the
